@@ -5,19 +5,26 @@ import java.util.List;
 
 public class TodoListMethods implements Methods {
 	private static ArrayList arrayTodoItems;
+	private static int numberOfTodoItems=0;
 	
+	public static int getNumberOfTodoItems() {
+		return numberOfTodoItems;
+	}
+
 	public TodoListMethods() {
 		arrayTodoItems = new ArrayList<TodoList>();
 	}
 	
 	@Override
-	public void removeItem(String itemName) {
+	public void removeItem(int index,String itemName) {
+		arrayTodoItems.remove(index);
 	
 	}
 
 	@Override
 	public void addItem(TodoList todoList) {
 		arrayTodoItems.add(todoList);
+		numberOfTodoItems++;
 
 	}
 
@@ -28,7 +35,9 @@ public class TodoListMethods implements Methods {
 	}
 
 	@Override
-	public void editStatus(TodoList todoList) {
+	public void editStatus(int index,String status) {
+		TodoList todoItem=(TodoList) arrayTodoItems.get(index);
+		todoItem.setStatus(status);
 	}
 
 	@Override
@@ -36,10 +45,6 @@ public class TodoListMethods implements Methods {
 		return null;
 	}
 
-	@Override
-	public void editStatus() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }
