@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class TodoList {
 	private String taskName;
 	private int priority;
+	private String status;
 	private LocalDate dateDeadline;
 	private LocalDate dateEntered;
 	
@@ -46,6 +47,14 @@ public class TodoList {
 
 	public void setDateEntered(LocalDate dateEntered) {
 		this.dateEntered = dateEntered;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }
