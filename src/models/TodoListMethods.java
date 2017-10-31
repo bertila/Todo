@@ -36,4 +36,10 @@ public class TodoListMethods implements Methods {
 		return null;
 	}
 
+	@Override
+	public void editStatus() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
