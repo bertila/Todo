@@ -8,13 +8,16 @@ public class TodoList {
 	private String status;
 	private LocalDate dateDeadline;
 	private LocalDate dateEntered;
+	private int id=0;
+	private int currentRecord=0;
 	
 	public TodoList(String taskName, int priority, LocalDate dateDeadline) {
+		this.id=currentRecord;
 		this.taskName = taskName;
 		this.priority = priority;
 		this.dateDeadline = dateDeadline;
 		this.dateEntered = LocalDate.now();
-		
+		currentRecord++;
 	}
 
 	public String getTaskName() {

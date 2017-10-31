@@ -42,7 +42,7 @@ public class TodoListMethods implements Methods {
 
 	@Override
 	public List<TodoList> listAllTodo() {
-		return null;
+		return arrayTodoItems;
 	}
 
 	
