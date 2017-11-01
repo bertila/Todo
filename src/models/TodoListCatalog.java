@@ -12,7 +12,7 @@ public class TodoListCatalog implements Methods {
 	}
 
 	public TodoListCatalog() {
-		arrayTodoItems = new ArrayList<TodoList>();
+		arrayTodoItems = new ArrayList<Task>();
 	}
 	
 	@Override
@@ -22,7 +22,7 @@ public class TodoListCatalog implements Methods {
 	}
 
 	@Override
-	public void addItem(TodoList todoList) {
+	public void addItem(Task todoList) {
 		arrayTodoItems.add(todoList);
 		numberOfTodoItems++;
 
@@ -31,12 +31,15 @@ public class TodoListCatalog implements Methods {
 
 	@Override
 	public void editStatus(int index,String status) {
-		TodoList todoItem=(TodoList) arrayTodoItems.get(index);
+		Task todoItem=(Task) arrayTodoItems.get(index);
 		todoItem.setStatus(status);
 	}
 
 	@Override
-	public List<TodoList> listAllTodo() {
+	public List<Task> listAllTodo() {
+		
+		
+		
 		return arrayTodoItems;
 	}
 
@@ -46,7 +49,7 @@ public class TodoListCatalog implements Methods {
 	}
 
 	@Override
-	public TodoList searchSpecificItem(String taskName) {
+	public Task searchSpecificItem(String taskName) {
 		return null;
 	}
 

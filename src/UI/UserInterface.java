@@ -72,9 +72,9 @@ public class UserInterface extends TodoListCatalog {
 		LocalDate date2 = LocalDate.parse(date);
 		
 		Task todo = new Task(task,prioInt,date2);
-		TodoListMethods methode = new TodoListMethods();
+		//TodoListMethods methode = new TodoListMethods();
 		
-		methode.addItem(todo);
+		//methode.addItem(todo);
 
 		sc1.close();
 		sc2.close();
