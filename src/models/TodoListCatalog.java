@@ -1,7 +1,8 @@
 package models;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class TodoListCatalog implements Methods {
@@ -55,7 +56,19 @@ public class TodoListCatalog implements Methods {
 
 	@Override
 	public void checkIfDeadLineExceeded() {
-		// TODO Auto-generated method stub
+		// check if due date passed
+		
+		List<Task> arrayList = listAllTodo();
+		LocalDate now= LocalDate.now();
+		
+	
+		
+		for(Task task:arrayList) {
+			LocalDate taskDeadLineDate=task.getDateDeadline();
+			if (taskDeadLineDate.compareTo(now)>0)  {
+				System.out.println(task.getTaskName() + "/"+task.getDateDeadline());
+			}
+		}
 		
 	}
 

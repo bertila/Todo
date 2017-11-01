@@ -50,7 +50,7 @@ public class UserInterface extends TodoListCatalog {
 				break;
 
 			case 4:
-				// Check deadline
+				checkDeadline();
 				break;
 
 			case 5:
@@ -79,6 +79,9 @@ public class UserInterface extends TodoListCatalog {
 				break;
 			}
 		} while (selected !=8);
+	}
+	public void checkDeadline() {
+		methode.checkIfDeadLineExceeded();
 	}
 	
 	private void deleteTask() {
