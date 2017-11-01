@@ -29,8 +29,8 @@ public class UserInterface extends TodoListCatalog {
 			System.out.print("5 List Sorted | ");
 			System.out.print("6 Remove | ");
 			System.out.println("7 Search |");
-			System.out.println("8 Exit |");
-			System.out.println("9 Entering more values");
+			System.out.println("8 Entering more values |");
+			System.out.println("9 Exit");
 
 			String select = scString.next();
 			selected = Integer.parseInt(select);
@@ -67,13 +67,13 @@ public class UserInterface extends TodoListCatalog {
 				break;
 
 			case 8:
+				System.out.println("Entering more values");
+				enterBulkValues();
+				
+			case 9:
 				System.out.println("Exiting program");
 				return;
 				
-			case 9:
-				System.out.println("Entering more values");
-				enterBulkValues();
-
 			default:
 				System.out.println("Invalid option selected!");
 				break;
@@ -153,7 +153,7 @@ public class UserInterface extends TodoListCatalog {
 	
 	private void listAllTasks() {
 		
-		System.out.println("Sort byTask (1), Sort byDueDate (2)");
+		System.out.println("Sort byTask (1), Sort byDueDate (2), Sort byPriority (3)");
 		String sort = scString.next();
 		
 		List<Task> list = methode.listAllTodo();
