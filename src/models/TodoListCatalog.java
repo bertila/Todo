@@ -1,9 +1,8 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-
-import models.Status;
 
 public class TodoListCatalog implements Methods {
 	private static ArrayList arrayTodoItems;
@@ -41,6 +40,12 @@ public class TodoListCatalog implements Methods {
 	@Override
 	public void removeDoneItems() {
 		
+		List<Task> arrayList = listAllTodo();
+		for(Task task:arrayList) {
+			if (task.getStatus()==Status.DONE) {
+				arrayTodoItems.remove(task.getId());
+			}
+		}
 	}
 
 	@Override

@@ -5,6 +5,15 @@ import java.time.LocalDate;
 import models.Status;
 
 public class Task {
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
 	private String taskName;
 	private int priority;
 	private Status status;
