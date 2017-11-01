@@ -1,6 +1,6 @@
+package UI;
 import java.util.Scanner;
 
-import UI.UserInterface;
 import models.TodoList;
 
 public class Main {

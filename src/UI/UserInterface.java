@@ -71,14 +71,20 @@ public class UserInterface extends TodoListCatalog {
 		String date =sc2.next();
 		LocalDate date2 = LocalDate.parse(date);
 		
-		TodoList lst = new TodoList(task,prioInt,date2);
-		System.out.println(lst.getTaskName());
-		sc1.close();
+		TodoList todo = new TodoList(task,prioInt,date2);
+		TodoListMethods methode = new TodoListMethods();
 		
+		methode.addItem(todo);
+
+		sc1.close();
 		sc2.close();
 	}
 	
 	private void getScannerInfo() {
+		
+	}
+	
+	private void searchForText(String find) {
 		
 	}
 }
