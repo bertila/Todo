@@ -2,7 +2,7 @@ package models;
 
 import java.time.LocalDate;
 
-import UI.Status;
+import models.Status;
 
 public class Task {
 	private String taskName;
@@ -56,11 +56,11 @@ public class Task {
 		this.dateEntered = dateEntered;
 	}
 
-	public String getStatus() {
+	public Status getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 

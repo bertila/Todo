@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+
+import models.Status;
 import models.Task;
 import models.TodoListCatalog;
 
@@ -71,6 +73,17 @@ class TodoList_Test {
 			System.out.print(nextItem.getTaskName());
 			System.out.println(nextItem.getDateDeadline());
 		}
+	}
+	@Test
+	void Test_EditProperties(int indexID,Status status) {
+		TodoListCatalog method = new TodoListCatalog();
+		
+//		LocalDate today = LocalDate.now();
+//		Task todo1 = new Task("Clean windows",1,today);
+//		
+		method.editStatus(indexID, status);
+		
+		
 	}
 	
 	

@@ -1,12 +1,11 @@
 package UI;
 
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import models.Status;
 import models.Task;
 import models.TodoListCatalog;
 
@@ -145,6 +144,9 @@ public class UserInterface extends TodoListCatalog {
 		}
 		
 		
+	}
+	public void editProperties(int indexID,Status status) {
+		methode.editStatus(indexID, status);
 	}
 }
 

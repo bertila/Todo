@@ -5,7 +5,7 @@ import java.util.List;
 public interface Methods  {
 	void deleteItem(int index,String itemName);
 	
-	void editStatus(int index,String status);
+	void editStatus(int index,Status status);
 	
 	List<Task> listAllTodo();
 	void addItem(Task todoList);

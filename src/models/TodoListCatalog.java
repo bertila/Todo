@@ -3,6 +3,8 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.Status;
+
 public class TodoListCatalog implements Methods {
 	private static ArrayList arrayTodoItems;
 	private static int numberOfTodoItems=0;
@@ -28,12 +30,7 @@ public class TodoListCatalog implements Methods {
 
 	}
 
-
-	@Override
-	public void editStatus(int index,String status) {
-		Task todoItem=(Task) arrayTodoItems.get(index);
-		todoItem.setStatus(status);
-	}
+	
 
 	@Override
 	public List<Task> listAllTodo() {
@@ -57,12 +54,18 @@ public class TodoListCatalog implements Methods {
 		
 	}
 
-	public void editTask(int indexID,String status,int priority) {
-		Task task= (Task) arrayTodoItems.get(indexID);
-		task.setStatus(status);
-		task.setPriority(priority);
-		
-	}
+//	public void editTask(int indexID,String status,int priority) {
+//		Task task= (Task) arrayTodoItems.get(indexID);
+//		task.setStatus(indexID,status);
+//		task.setPriority(priority);
+//		
+//	}
 
+	@Override
+	public void editStatus(int index, models.Status status) {
+		Task todoItem=(Task) arrayTodoItems.get(index);
+		todoItem.setStatus(status); 
+	
+	}
 
 }
