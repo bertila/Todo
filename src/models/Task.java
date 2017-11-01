@@ -20,10 +20,11 @@ public class Task {
 	private LocalDate dateDeadline;
 	private LocalDate dateEntered;
 	private int id=0;
-	private int currentRecord=0;
+	private static int currentRecord;
 	
 	public Task(String taskName, int priority, LocalDate dateDeadline) {
-		this.id=currentRecord;
+		this.id=currentRecord+1
+				;
 		this.taskName = taskName;
 		this.priority = priority;
 		this.dateDeadline = dateDeadline;
@@ -76,9 +77,31 @@ public class Task {
 
 	@Override
 	public String toString() {
-		return "Task [taskName=" + taskName + ", priority=" + priority + ", status=" + status + ", dateDeadline="
-				+ dateDeadline + ", dateEntered=" + dateEntered + ", id=" + id + ", currentRecord=" + currentRecord
-				+ "]";
+		String returnValue ="";
+		
+		
+		return "Task taskName=" + retValue(taskName,25) + " priority=" + retValue(priority,3) + " status=" + retValue(status,7) + " dateDeadline="
+				+ retValue(dateDeadline.toString(),12) + " dateEntered=" + retValue(dateEntered.toString(),12) + " id=" + retValue(id,7);
 	}
 
+	
+	private String retValue(String input, int length) {
+		String space = new String(new char[25]).replace('\0', ' ');
+		String ret = (input + space).substring(0, length); 
+		
+		return ret;
+		
+	}
+	
+	private String retValue(int input, int length) {
+		String convert = Integer.toString(input);
+			
+		return retValue(convert, length);
+		
+	}
+	
+	private String retValue(Status input, int length) {
+		return retValue(input.toString(), length);
+		
+	}
 }

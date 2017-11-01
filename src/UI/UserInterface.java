@@ -1,6 +1,7 @@
 package UI;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -21,15 +22,15 @@ public class UserInterface extends TodoListCatalog {
 		
 		do {
 			System.out.print("Select function | ");
-			System.out.print("1 New Task | ");
-			System.out.print("2 Delete Task | ");
-			System.out.print("3 Edit Status | ");
-			System.out.print("4 List Deadline | ");
+			System.out.print("1 New | ");
+			System.out.print("2 Delete | ");
+			System.out.print("3 Edit | ");
+			System.out.print("4 List Date | ");
 			System.out.print("5 List Sorted | ");
-			System.out.print("6 Remove Task | ");
-			System.out.println("7 Search");
-			System.out.println("8 Exit");
-			System.out.println("9 Entering more values");
+			System.out.print("6 Remove | ");
+			System.out.println("7 Search |");
+			System.out.println("8 Entering more values |");
+			System.out.println("9 Exit");
 
 			String select = scString.next();
 			selected = Integer.parseInt(select);
@@ -44,6 +45,7 @@ public class UserInterface extends TodoListCatalog {
 				break;
 
 			case 3:
+				editStatusFromList();
 				// Edit status
 				break;
 
@@ -65,18 +67,34 @@ public class UserInterface extends TodoListCatalog {
 				break;
 
 			case 8:
+				System.out.println("Entering more values");
+				enterBulkValues();
+				
+			case 9:
 				System.out.println("Exiting program");
 				return;
 				
-			case 9:
-				System.out.println("Entering more values");
-				enterBulkValues();
-
 			default:
 				System.out.println("Invalid option selected!");
 				break;
 			}
 		} while (selected !=8);
+	}
+	
+	private void editStatusFromList() {
+		System.out.println("Select ID to change");
+		String id = scString.next();
+		
+		int select = Integer.parseInt(id);
+		
+		System.out.println("Select status (O)PEN/(D)ONE");
+		id = scString.next();
+		if (id.equals("O")){
+			editStatus(select,Status.OPEN);
+		}
+		else if (id.equals("D")) {
+			editStatus(select,Status.DONE);
+		}
 	}
 	
 	private void enterBulkValues() {
@@ -134,9 +152,24 @@ public class UserInterface extends TodoListCatalog {
 	}
 	
 	private void listAllTasks() {
-		// TodoListCatalog method = new TodoListCatalog();
+		
+		System.out.println("Sort byTask (1), Sort byDueDate (2), Sort byPriority (3)");
+		String sort = scString.next();
 		
 		List<Task> list = methode.listAllTodo();
+		
+		switch (sort) {
+		case "1":
+			Collections.sort(list, new TaskNameComparator());
+			break;
+		case "2":
+			Collections.sort(list, new TaskDueDateComparator());
+			
+		case "3":
+			Collections.sort(list, new TaskPriorityComparator());
+		default:
+			break;
+		}
 		
 		System.out.println("List size=" + list.size());
 		for (Task nextTask : list) {
