@@ -17,7 +17,7 @@ public class TodoListCatalog implements Methods {
 	}
 	
 	@Override
-	public void deleteItem(int index,String itemName) {
+	public void deleteItem(int index) {
 		arrayTodoItems.remove(index);
 	
 	}
@@ -67,10 +67,13 @@ public class TodoListCatalog implements Methods {
 //	}
 
 	@Override
-	public void editStatus(int index, models.Status status) {
+	public void editStatus(int index, models.Status status){
 		Task todoItem=(Task) arrayTodoItems.get(index);
+		if(todoItem!=null) {
 		todoItem.setStatus(status); 
-	
+		}else {
+			System.out.println("The item was not found");
+		}
 	}
 
 }

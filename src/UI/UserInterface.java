@@ -59,7 +59,7 @@ public class UserInterface extends TodoListCatalog {
 				break;
 
 			case 6:
-				// Remove done Todo
+				removeDoneTodo();
 				break;
 
 			case 7:
@@ -79,6 +79,21 @@ public class UserInterface extends TodoListCatalog {
 				break;
 			}
 		} while (selected !=8);
+	}
+	
+	private void deleteTask() {
+		System.out.println("Select ID to change");
+		String id = scString.next();
+		
+		int select = Integer.parseInt(id);
+		
+		methode.deleteItem(select);
+		
+		
+	}
+	
+	private void removeDoneTodo() {
+		methode.removeDoneItems();
 	}
 	
 	private void editStatusFromList() {
