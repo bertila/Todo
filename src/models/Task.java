@@ -69,7 +69,7 @@ public class Task {
 		String returnValue ="";
 		
 		
-		return "Task taskName=" + retValue(taskName,25) + " priority" + retValue(priority,3) + " status=" + retValue(status,7) + " dateDeadline="
+		return "Task taskName=" + retValue(taskName,25) + " priority=" + retValue(priority,3) + " status=" + retValue(status,7) + " dateDeadline="
 				+ retValue(dateDeadline.toString(),12) + " dateEntered=" + retValue(dateEntered.toString(),12) + " id=" + retValue(id,7) + " currentRecord=" + retValue(currentRecord,5);
 	}
 	

@@ -147,6 +147,9 @@ public class UserInterface extends TodoListCatalog {
 			break;
 		case "2":
 			Collections.sort(list, new TaskDueDateComparator());
+			
+		case "3":
+			Collections.sort(list, new TaskPriorityComparator());
 		default:
 			break;
 		}
