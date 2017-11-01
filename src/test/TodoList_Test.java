@@ -2,6 +2,8 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDate;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import models.Task;
 import models.TodoListCatalog;
@@ -50,6 +52,25 @@ class TodoList_Test {
 				// .getNumberOfTodoItems();
 		
 		assertTrue(methodCount == listCount);
+	}
+	
+	@Test
+	void Test_List_Todo() {
+		TodoListCatalog method = new TodoListCatalog();
+		
+		LocalDate today = LocalDate.now();
+		Task todo1 = new Task("Clean windows",1,today);
+		Task todo2 = new Task("Clean Harddrive",2,today);
+		Task todo3 = new Task("Make GitHub account",2,today);
+		Task todo4 = new Task("Develope new website",3,today);
+		
+		List<Task> list = method.listAllTodo();
+		
+		for (Task nextItem : list) {
+			System.out.print(nextItem.getPriority());
+			System.out.print(nextItem.getTaskName());
+			System.out.println(nextItem.getDateDeadline());
+		}
 	}
 	
 	
