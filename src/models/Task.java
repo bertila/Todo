@@ -69,16 +69,15 @@ public class Task {
 		String returnValue ="";
 		
 		
-		return "Task [taskName=" + retValue(taskName,25) + ", priority=" + retValue(priority,3) + ", status=" + retValue(status,7) + ", dateDeadline="
-				+ retValue(dateDeadline.toString(),12) + ", dateEntered=" + retValue(dateEntered.toString(),12) + ", id=" + retValue(id,7) + ", currentRecord=" + retValue(currentRecord,5)
-				+ "]";
+		return "Task taskName=" + retValue(taskName,25) + " priority" + retValue(priority,3) + " status=" + retValue(status,7) + " dateDeadline="
+				+ retValue(dateDeadline.toString(),12) + " dateEntered=" + retValue(dateEntered.toString(),12) + " id=" + retValue(id,7) + " currentRecord=" + retValue(currentRecord,5);
 	}
 	
 	private String retValue(String input, int length) {
 		String space = new String(new char[25]).replace('\0', ' ');
 		String ret = (input + space).substring(0, length); 
 		
-		return input;
+		return ret;
 		
 	}
 	

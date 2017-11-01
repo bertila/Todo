@@ -135,12 +135,21 @@ public class UserInterface extends TodoListCatalog {
 	}
 	
 	private void listAllTasks() {
-		// TodoListCatalog method = new TodoListCatalog();
+		
+		System.out.println("Sort byTask (1), Sort byDueDate (2)");
+		String sort = scString.next();
 		
 		List<Task> list = methode.listAllTodo();
 		
-		// Collections.sort(list, new TaskNameComparator());
-		Collections.sort(list, new TaskDueDateComparator());
+		switch (sort) {
+		case "1":
+			Collections.sort(list, new TaskNameComparator());
+			break;
+		case "2":
+			Collections.sort(list, new TaskDueDateComparator());
+		default:
+			break;
+		}
 		
 		System.out.println("List size=" + list.size());
 		for (Task nextTask : list) {
