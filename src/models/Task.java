@@ -2,10 +2,12 @@ package models;
 
 import java.time.LocalDate;
 
+import UI.Status;
+
 public class Task {
 	private String taskName;
 	private int priority;
-	private String status;
+	private Status status;
 	private LocalDate dateDeadline;
 	private LocalDate dateEntered;
 	private int id=0;
@@ -17,6 +19,8 @@ public class Task {
 		this.priority = priority;
 		this.dateDeadline = dateDeadline;
 		this.dateEntered = LocalDate.now();
+		this.status = Status.OPEN;
+		
 		currentRecord++;
 	}
 
