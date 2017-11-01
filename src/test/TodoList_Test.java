@@ -2,10 +2,12 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import UI.TaskNameComparator;
 import models.Status;
 import models.Task;
 import models.TodoListCatalog;
@@ -75,18 +77,49 @@ class TodoList_Test {
 		}
 	}
 	@Test
-	void Test_EditProperties(int indexID,Status status) {
+	void Test_EditProperties() {
 		TodoListCatalog method = new TodoListCatalog();
 		
-//		LocalDate today = LocalDate.now();
-//		Task todo1 = new Task("Clean windows",1,today);
-//		
-		method.editStatus(indexID, status);
+		LocalDate today = LocalDate.now();
+		Task todo1 = new Task("Clean windows",1,today);
+		Task todo2 = new Task("Clean Harddrive",2,today);
+		Task todo3 = new Task("Make GitHub account",2,today);
+		Task todo4 = new Task("Develope new website",3,today);
 		
+		method.addItem(todo1);
+		method.addItem(todo2);
+		method.addItem(todo3);
+		method.addItem(todo4);
 		
+		method.editStatus(0,Status.OPEN);
+		method.editStatus(1,Status.DONE);
+		method.editStatus(2,Status.OPEN);
+		method.editStatus(3,Status.OPEN);
+		
+		assertTrue(todo2.getStatus().equals(Status.DONE));
+
 	}
 	
-	
-	
-
+	@SuppressWarnings("unlikely-arg-type")
+	@Test
+	void Test_SortingAlphabetic() {
+		TodoListCatalog method = new TodoListCatalog();
+		
+		LocalDate today = LocalDate.now();
+		Task todo1 = new Task("ZClean windows",1,today);
+		Task todo2 = new Task("GClean Harddrive",2,today);
+		Task todo3 = new Task("AMake GitHub account",2,today);
+		Task todo4 = new Task("DDevelope new website",3,today);
+		
+		method.addItem(todo1);
+		method.addItem(todo2);
+		method.addItem(todo3);
+		method.addItem(todo4);
+		
+		List<Task> list = method.listAllTodo();
+		
+		Collections.sort(list, new TaskNameComparator());
+		assertTrue(list.get(0).getTaskName().equals("AMake GitHub account"));
+		
+	}
 }
