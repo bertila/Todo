@@ -25,7 +25,7 @@ public class UserInterface extends TodoListCatalog {
 			System.out.print("1 New | ");
 			System.out.print("2 Delete | ");
 			System.out.print("3 Edit | ");
-			System.out.print("4 List Date | ");
+			System.out.print("4 Check Deadline | ");
 			System.out.print("5 List Sorted | ");
 			System.out.print("6 Remove | ");
 			System.out.println("7 Search |");
@@ -50,6 +50,7 @@ public class UserInterface extends TodoListCatalog {
 				break;
 
 			case 4:
+				
 				// Check deadline
 				break;
 
@@ -68,8 +69,9 @@ public class UserInterface extends TodoListCatalog {
 
 			case 8:
 				System.out.println("Entering more values");
-				enterBulkValues();
-				
+					enterBulkValues();
+
+					break;
 			case 9:
 				System.out.println("Exiting program");
 				return;
@@ -78,7 +80,7 @@ public class UserInterface extends TodoListCatalog {
 				System.out.println("Invalid option selected!");
 				break;
 			}
-		} while (selected !=8);
+		} while (selected !=9);
 	}
 	
 	private void editStatusFromList() {
@@ -102,19 +104,19 @@ public class UserInterface extends TodoListCatalog {
 		
 		LocalDate today = LocalDate.now();
 		
-		int days = rand.nextInt(100);
-		Task todo1 = new Task("Clean windows",1,today.minusDays(days));
+		int days = rand.nextInt(200);
+		Task todo1 = new Task("Clean windows",1,today.plusDays(days));
 		methode.addItem(todo1);
 		
-		days = rand.nextInt(100);
-		Task todo2 = new Task("Clean Harddrive",2,today.minusDays(days));
+		days = rand.nextInt(200);
+		Task todo2 = new Task("Clean Harddrive",2,today.plusDays(days));
 		methode.addItem(todo2);
 		
-		days = rand.nextInt(100);
+		days = rand.nextInt(200);
 		Task todo3 = new Task("Make GitHub account",2,today.plusDays(days));
 		methode.addItem(todo3);
 		
-		days = rand.nextInt(100);
+		days = rand.nextInt(200);
 		Task todo4 = new Task("Develope new website",3,today.plusDays(days));
 		methode.addItem(todo4);
 		
@@ -161,12 +163,16 @@ public class UserInterface extends TodoListCatalog {
 		switch (sort) {
 		case "1":
 			Collections.sort(list, new TaskNameComparator());
+			
 			break;
 		case "2":
 			Collections.sort(list, new TaskDueDateComparator());
 			
+			
 		case "3":
-			Collections.sort(list, new TaskPriorityComparator());
+			Collections.sort(list, new TaskNamePriorityComparator());
+			
+			
 		default:
 			break;
 		}
