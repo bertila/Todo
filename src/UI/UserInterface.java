@@ -3,7 +3,7 @@ package UI;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-import models.TodoList;
+import models.Task;
 import models.TodoListCatalog;
 
 public class UserInterface extends TodoListCatalog {
@@ -71,7 +71,7 @@ public class UserInterface extends TodoListCatalog {
 		String date =sc2.next();
 		LocalDate date2 = LocalDate.parse(date);
 		
-		TodoList todo = new TodoList(task,prioInt,date2);
+		Task todo = new Task(task,prioInt,date2);
 		TodoListMethods methode = new TodoListMethods();
 		
 		methode.addItem(todo);

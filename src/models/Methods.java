@@ -7,10 +7,10 @@ public interface Methods  {
 	
 	void editStatus(int index,String status);
 	
-	List<TodoList> listAllTodo();
-	void addItem(TodoList todoList);
+	List<Task> listAllTodo();
+	void addItem(Task todoList);
 	void removeDoneItems();
-	TodoList searchSpecificItem(String taskName);
+	Task searchSpecificItem(String taskName);
 	void checkIfDeadLineExceeded();
 
 	

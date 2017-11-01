@@ -2,7 +2,7 @@ package models;
 
 import java.time.LocalDate;
 
-public class TodoList {
+public class Task {
 	private String taskName;
 	private int priority;
 	private String status;
@@ -11,7 +11,7 @@ public class TodoList {
 	private int id=0;
 	private int currentRecord=0;
 	
-	public TodoList(String taskName, int priority, LocalDate dateDeadline) {
+	public Task(String taskName, int priority, LocalDate dateDeadline) {
 		this.id=currentRecord;
 		this.taskName = taskName;
 		this.priority = priority;

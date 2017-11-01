@@ -1,7 +1,7 @@
 package UI;
 import java.util.Scanner;
 
-import models.TodoList;
+import models.Task;
 
 public class Main {
 
