@@ -22,14 +22,14 @@ public class UserInterface extends TodoListCatalog {
 		
 		do {
 			System.out.print("Select function | ");
-			System.out.print("1 New Task | ");
-			System.out.print("2 Delete Task | ");
-			System.out.print("3 Edit Status | ");
-			System.out.print("4 List Deadline | ");
+			System.out.print("1 New | ");
+			System.out.print("2 Delete | ");
+			System.out.print("3 Edit | ");
+			System.out.print("4 List Date | ");
 			System.out.print("5 List Sorted | ");
-			System.out.print("6 Remove Task | ");
-			System.out.println("7 Search");
-			System.out.println("8 Exit");
+			System.out.print("6 Remove | ");
+			System.out.println("7 Search |");
+			System.out.println("8 Exit |");
 			System.out.println("9 Entering more values");
 
 			String select = scString.next();
@@ -138,6 +138,9 @@ public class UserInterface extends TodoListCatalog {
 		// TodoListCatalog method = new TodoListCatalog();
 		
 		List<Task> list = methode.listAllTodo();
+		
+		// Collections.sort(list, new TaskNameComparator());
+		Collections.sort(list, new TaskDueDateComparator());
 		
 		System.out.println("List size=" + list.size());
 		for (Task nextTask : list) {
