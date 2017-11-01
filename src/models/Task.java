@@ -2,7 +2,7 @@ package models;
 
 import java.time.LocalDate;
 
-import UI.Status;
+import models.Status;
 
 public class Task {
 	private String taskName;
@@ -56,13 +56,14 @@ public class Task {
 		this.dateEntered = dateEntered;
 	}
 
-	public String getStatus() {
+	public Status getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
+
 
 	@Override
 	public String toString() {
@@ -72,6 +73,7 @@ public class Task {
 		return "Task taskName=" + retValue(taskName,25) + " priority=" + retValue(priority,3) + " status=" + retValue(status,7) + " dateDeadline="
 				+ retValue(dateDeadline.toString(),12) + " dateEntered=" + retValue(dateEntered.toString(),12) + " id=" + retValue(id,7) + " currentRecord=" + retValue(currentRecord,5);
 	}
+
 	
 	private String retValue(String input, int length) {
 		String space = new String(new char[25]).replace('\0', ' ');
@@ -92,6 +94,4 @@ public class Task {
 		return retValue(input.toString(), length);
 		
 	}
-
-
 }
