@@ -3,7 +3,7 @@ package models;
 import java.util.List;
 
 public interface Methods  {
-	void deleteItem(int index,String itemName);
+	void deleteItem(int index);
 	
 	void editStatus(int index,Status status);
 	
@@ -12,6 +12,7 @@ public interface Methods  {
 	void removeDoneItems();
 	Task searchSpecificItem(String taskName);
 	void checkIfDeadLineExceeded();
+	
 
 	
 

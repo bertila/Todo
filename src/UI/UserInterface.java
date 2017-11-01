@@ -50,8 +50,9 @@ public class UserInterface extends TodoListCatalog {
 				break;
 
 			case 4:
-				
 				// Check deadline
+				checkDeadline();
+
 				break;
 
 			case 5:
@@ -60,7 +61,7 @@ public class UserInterface extends TodoListCatalog {
 				break;
 
 			case 6:
-				// Remove done Todo
+				removeDoneTodo();
 				break;
 
 			case 7:
@@ -81,6 +82,24 @@ public class UserInterface extends TodoListCatalog {
 				break;
 			}
 		} while (selected !=9);
+	}
+	public void checkDeadline() {
+		methode.checkIfDeadLineExceeded();
+	}
+	
+	private void deleteTask() {
+		System.out.println("Select ID to change");
+		String id = scString.next();
+		
+		int select = Integer.parseInt(id);
+		
+		methode.deleteItem(select);
+		
+		
+	}
+	
+	private void removeDoneTodo() {
+		methode.removeDoneItems();
 	}
 	
 	private void editStatusFromList() {

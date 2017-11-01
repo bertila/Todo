@@ -1,9 +1,9 @@
 package models;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
-import models.Status;
 
 public class TodoListCatalog implements Methods {
 	private static ArrayList arrayTodoItems;
@@ -18,7 +18,7 @@ public class TodoListCatalog implements Methods {
 	}
 	
 	@Override
-	public void deleteItem(int index,String itemName) {
+	public void deleteItem(int index) {
 		arrayTodoItems.remove(index);
 	
 	}
@@ -41,6 +41,12 @@ public class TodoListCatalog implements Methods {
 	@Override
 	public void removeDoneItems() {
 		
+		List<Task> arrayList = listAllTodo();
+		for(Task task:arrayList) {
+			if (task.getStatus()==Status.DONE) {
+				arrayTodoItems.remove(task.getId());
+			}
+		}
 	}
 
 	@Override
@@ -50,7 +56,19 @@ public class TodoListCatalog implements Methods {
 
 	@Override
 	public void checkIfDeadLineExceeded() {
-		// TODO Auto-generated method stub
+		// check if due date passed
+		
+		List<Task> arrayList = listAllTodo();
+		LocalDate now= LocalDate.now();
+		
+	
+		
+		for(Task task:arrayList) {
+			LocalDate taskDeadLineDate=task.getDateDeadline();
+			if (taskDeadLineDate.compareTo(now)>0)  {
+				System.out.println(task.getTaskName() + "/"+task.getDateDeadline());
+			}
+		}
 		
 	}
 
@@ -62,10 +80,13 @@ public class TodoListCatalog implements Methods {
 //	}
 
 	@Override
-	public void editStatus(int index, models.Status status) {
+	public void editStatus(int index, models.Status status){
 		Task todoItem=(Task) arrayTodoItems.get(index);
+		if(todoItem!=null) {
 		todoItem.setStatus(status); 
-	
+		}else {
+			System.out.println("The item was not found");
+		}
 	}
 
 }
