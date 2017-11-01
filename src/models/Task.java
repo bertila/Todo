@@ -11,10 +11,11 @@ public class Task {
 	private LocalDate dateDeadline;
 	private LocalDate dateEntered;
 	private int id=0;
-	private int currentRecord=0;
+	private static int currentRecord;
 	
 	public Task(String taskName, int priority, LocalDate dateDeadline) {
-		this.id=currentRecord;
+		this.id=currentRecord+1
+				;
 		this.taskName = taskName;
 		this.priority = priority;
 		this.dateDeadline = dateDeadline;
@@ -71,7 +72,7 @@ public class Task {
 		
 		
 		return "Task taskName=" + retValue(taskName,25) + " priority=" + retValue(priority,3) + " status=" + retValue(status,7) + " dateDeadline="
-				+ retValue(dateDeadline.toString(),12) + " dateEntered=" + retValue(dateEntered.toString(),12) + " id=" + retValue(id,7) + " currentRecord=" + retValue(currentRecord,5);
+				+ retValue(dateDeadline.toString(),12) + " dateEntered=" + retValue(dateEntered.toString(),12) + " id=" + retValue(id,7);
 	}
 
 	

@@ -45,6 +45,7 @@ public class UserInterface extends TodoListCatalog {
 				break;
 
 			case 3:
+				editStatusFromList();
 				// Edit status
 				break;
 
@@ -78,6 +79,22 @@ public class UserInterface extends TodoListCatalog {
 				break;
 			}
 		} while (selected !=8);
+	}
+	
+	private void editStatusFromList() {
+		System.out.println("Select ID to change");
+		String id = scString.next();
+		
+		int select = Integer.parseInt(id);
+		
+		System.out.println("Select status (O)PEN/(D)ONE");
+		id = scString.next();
+		if (id.equals("O")){
+			editStatus(select,Status.OPEN);
+		}
+		else if (id.equals("D")) {
+			editStatus(select,Status.DONE);
+		}
 	}
 	
 	private void enterBulkValues() {
