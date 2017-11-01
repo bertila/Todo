@@ -3,7 +3,7 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TodoListMethods implements Methods {
+public class TodoListCatalog implements Methods {
 	private static ArrayList arrayTodoItems;
 	private static int numberOfTodoItems=0;
 	
@@ -11,12 +11,12 @@ public class TodoListMethods implements Methods {
 		return numberOfTodoItems;
 	}
 
-	public TodoListMethods() {
+	public TodoListCatalog() {
 		arrayTodoItems = new ArrayList<TodoList>();
 	}
 	
 	@Override
-	public void removeItem(int index,String itemName) {
+	public void deleteItem(int index,String itemName) {
 		arrayTodoItems.remove(index);
 	
 	}
@@ -28,11 +28,6 @@ public class TodoListMethods implements Methods {
 
 	}
 
-	@Override
-	public void deleteItem() {
-		
-
-	}
 
 	@Override
 	public void editStatus(int index,String status) {
@@ -43,6 +38,22 @@ public class TodoListMethods implements Methods {
 	@Override
 	public List<TodoList> listAllTodo() {
 		return arrayTodoItems;
+	}
+
+	@Override
+	public void removeDoneItems() {
+		
+	}
+
+	@Override
+	public TodoList searchSpecificItem(String taskName) {
+		return null;
+	}
+
+	@Override
+	public void checkIfDeadLineExceeded() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

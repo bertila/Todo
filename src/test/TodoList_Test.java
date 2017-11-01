@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import models.TodoList;
-import models.TodoListMethods;
+import models.TodoListCatalog;
 
 class TodoList_Test {
 	@Test
@@ -32,7 +32,7 @@ class TodoList_Test {
 	
 	@Test
 	void Test_Quantity() {
-		TodoListMethods method = new TodoListMethods();
+		TodoListCatalog method = new TodoListCatalog();
 		LocalDate today = LocalDate.now();
 		TodoList todo1 = new TodoList("Clean windows",1,today);
 		TodoList todo2 = new TodoList("Clean Harddrive",2,today);

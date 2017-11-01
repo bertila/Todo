@@ -4,9 +4,9 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 import models.TodoList;
-import models.TodoListMethods;
+import models.TodoListCatalog;
 
-public class UserInterface extends TodoListMethods {
+public class UserInterface extends TodoListCatalog {
 	Scanner sc1 = new Scanner(System.in);
 	Scanner sc2 = new Scanner(System.in);
 	public void startInput() {
