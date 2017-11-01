@@ -60,4 +60,11 @@ public class Task {
 		this.status = status;
 	}
 
+	@Override
+	public String toString() {
+		return "Task [taskName=" + taskName + ", priority=" + priority + ", status=" + status + ", dateDeadline="
+				+ dateDeadline + ", dateEntered=" + dateEntered + ", id=" + id + ", currentRecord=" + currentRecord
+				+ "]";
+	}
+
 }

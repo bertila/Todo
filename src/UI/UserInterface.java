@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 import models.Task;
@@ -29,6 +30,7 @@ public class UserInterface extends TodoListCatalog {
 			System.out.print("6 Remove Task | ");
 			System.out.println("7 Search");
 			System.out.println("8 Exit");
+			System.out.println("9 Entering more values");
 
 			String select = scString.next();
 			selected = Integer.parseInt(select);
@@ -66,13 +68,40 @@ public class UserInterface extends TodoListCatalog {
 			case 8:
 				System.out.println("Exiting program");
 				return;
-
+				
+			case 9:
+				System.out.println("Entering more values");
+				enterBulkValues();
 
 			default:
 				System.out.println("Invalid option selected!");
 				break;
 			}
 		} while (selected !=8);
+	}
+	
+	private void enterBulkValues() {
+		Random rand = new Random();
+		
+		LocalDate today = LocalDate.now();
+		
+		int days = rand.nextInt(100);
+		Task todo1 = new Task("Clean windows",1,today.minusDays(days));
+		methode.addItem(todo1);
+		
+		days = rand.nextInt(100);
+		Task todo2 = new Task("Clean Harddrive",2,today.minusDays(days));
+		methode.addItem(todo2);
+		
+		days = rand.nextInt(100);
+		Task todo3 = new Task("Make GitHub account",2,today.plusDays(days));
+		methode.addItem(todo3);
+		
+		days = rand.nextInt(100);
+		Task todo4 = new Task("Develope new website",3,today.plusDays(days));
+		methode.addItem(todo4);
+		
+		
 	}
 	
 
@@ -110,8 +139,9 @@ public class UserInterface extends TodoListCatalog {
 		
 		List<Task> list = methode.listAllTodo();
 		
+		System.out.println("List size=" + list.size());
 		for (Task nextTask : list) {
-			System.out.println(nextTask.getTaskName());
+			System.out.println(nextTask);
 		}
 		
 		
