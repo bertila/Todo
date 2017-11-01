@@ -1,6 +1,9 @@
 package UI;
 
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 import models.Task;
@@ -9,7 +12,10 @@ import models.TodoListCatalog;
 
 public class UserInterface extends TodoListCatalog {
 	Scanner scString = new Scanner(System.in);
-	// Scanner scInt = new Scanner(System.in);
+	Scanner scInt = new Scanner(System.in);
+	
+	TodoListCatalog methode = new TodoListCatalog();
+	
 	int selected;
 	public void startInput() {
 		
@@ -45,6 +51,7 @@ public class UserInterface extends TodoListCatalog {
 				break;
 
 			case 5:
+				listAllTasks();
 				// List all sorted
 				break;
 
@@ -58,8 +65,7 @@ public class UserInterface extends TodoListCatalog {
 
 			case 8:
 				System.out.println("Exiting program");
-				System.exit(0);
-				break;
+				return;
 
 
 			default:
@@ -73,21 +79,20 @@ public class UserInterface extends TodoListCatalog {
 
 	void enterNewTask() {
 		System.out.println("Enter taskname:\t");
-
 		String task = scString.next();
 
 		System.out.println("Enter priority:\t");
+		
 		String prio = scString.next();
 		int prioInt = Integer.parseInt(prio);
-
+		
 		System.out.println("Deadline date:\t");
 		String date =scString.next();
 		LocalDate date2 = LocalDate.parse(date);
 		
 		Task todo = new Task(task,prioInt,date2);
-		//TodoListMethods methode = new TodoListMethods();
 		
-		//methode.addItem(todo);
+		methode.addItem(todo );
 
 		// scString.close();
 	}
@@ -98,6 +103,18 @@ public class UserInterface extends TodoListCatalog {
 
 	private void searchForText(String find) {
 
+	}
+	
+	private void listAllTasks() {
+		// TodoListCatalog method = new TodoListCatalog();
+		
+		List<Task> list = methode.listAllTodo();
+		
+		for (Task nextTask : list) {
+			System.out.println(nextTask.getTaskName());
+		}
+		
+		
 	}
 }
 

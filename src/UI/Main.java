@@ -10,6 +10,7 @@ public class Main {
 		UserInterface ui = new UserInterface();
 		ui.startInput();
 		
+		System.out.println("Exiting in Main");
 
 	}
 

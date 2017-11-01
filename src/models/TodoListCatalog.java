@@ -37,9 +37,7 @@ public class TodoListCatalog implements Methods {
 
 	@Override
 	public List<Task> listAllTodo() {
-		
-		
-		
+
 		return arrayTodoItems;
 	}
 
