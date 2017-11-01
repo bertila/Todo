@@ -57,6 +57,12 @@ public class TodoListCatalog implements Methods {
 		
 	}
 
-	
+	public void editTask(int indexID,String status,int priority) {
+		Task task= (Task) arrayTodoItems.get(indexID);
+		task.setStatus(status);
+		task.setPriority(priority);
+		
+	}
+
 
 }
