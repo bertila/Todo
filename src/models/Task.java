@@ -2,10 +2,12 @@ package models;
 
 import java.time.LocalDate;
 
+import UI.Status;
+
 public class Task {
 	private String taskName;
 	private int priority;
-	private String status;
+	private Status status;
 	private LocalDate dateDeadline;
 	private LocalDate dateEntered;
 	private int id=0;
@@ -17,6 +19,8 @@ public class Task {
 		this.priority = priority;
 		this.dateDeadline = dateDeadline;
 		this.dateEntered = LocalDate.now();
+		this.status = Status.OPEN;
+		
 		currentRecord++;
 	}
 
@@ -59,6 +63,13 @@ public class Task {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	
+
+
+	@Override
+	public String toString() {
+		return "Task [taskName=" + taskName + ", priority=" + priority + ", status=" + status + ", dateDeadline="
+				+ dateDeadline + ", dateEntered=" + dateEntered + ", id=" + id + ", currentRecord=" + currentRecord
+				+ "]";
+	}
+
 }
