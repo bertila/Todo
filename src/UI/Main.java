@@ -11,7 +11,5 @@ public class Main {
 		ui.startInput();
 		
 		System.out.println("Exiting in Main");
-
 	}
-
 }

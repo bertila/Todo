@@ -34,8 +34,16 @@ public class UserInterface extends TodoListCatalog {
 			System.out.println("9 Exit");
 
 			String select = scString.next();
-			selected = Integer.parseInt(select);
+			try {
+				selected = Integer.parseInt(select);
+			}
+			catch (Exception e) {
+				selected =0;
+			}
+			finally{
 
+			}
+			
 			switch (selected) {
 			case 1:
 				// Enter task
@@ -52,7 +60,9 @@ public class UserInterface extends TodoListCatalog {
 				break;
 
 			case 4:
+				// Check deadline
 				checkDeadline();
+
 				break;
 
 			case 5:
@@ -71,8 +81,8 @@ public class UserInterface extends TodoListCatalog {
 
 			case 8:
 				System.out.println("Entering more values");
-				enterBulkValues();
-
+					enterBulkValues();
+					break;
 			case 9:
 				System.out.println("Exiting program");
 				return;
@@ -81,7 +91,7 @@ public class UserInterface extends TodoListCatalog {
 				System.out.println("Invalid option selected!");
 				break;
 			}
-		} while (selected !=8);
+		} while (selected !=9);
 	}
 
 
@@ -128,15 +138,14 @@ public class UserInterface extends TodoListCatalog {
 	private void editStatusFromList() {
 		System.out.println("Select ID to change");
 		String id = scString.next();
-
 		int select = Integer.parseInt(id);
 
 		System.out.println("Select status (O)PEN/(D)ONE");
 		id = scString.next();
-		if (id.equals("O")){
+		if (id.equalsIgnoreCase("O")){
 			editStatus(select,Status.OPEN);
 		}
-		else if (id.equals("D")) {
+		else if (id.equalsIgnoreCase("D")) {
 			editStatus(select,Status.DONE);
 		}
 	}
@@ -145,27 +154,23 @@ public class UserInterface extends TodoListCatalog {
 		Random rand = new Random();
 
 		LocalDate today = LocalDate.now();
-
-		int days = rand.nextInt(100);
-		Task todo1 = new Task("Clean windows",1,today.minusDays(days));
+		
+		int days = rand.nextInt(200);
+		Task todo1 = new Task("Clean windows",1,today.plusDays(days));
 		methode.addItem(todo1);
 
-		days = rand.nextInt(100);
-		Task todo2 = new Task("Clean Harddrive",2,today.minusDays(days));
+		days = rand.nextInt(200);
+		Task todo2 = new Task("Clean Harddrive",2,today.plusDays(days));
 		methode.addItem(todo2);
-
-		days = rand.nextInt(100);
+		days = rand.nextInt(200);
 		Task todo3 = new Task("Make GitHub account",2,today.plusDays(days));
 		methode.addItem(todo3);
-
-		days = rand.nextInt(100);
+		days = rand.nextInt(200);
 		Task todo4 = new Task("Develope new website",3,today.plusDays(days));
 		methode.addItem(todo4);
 
 
 	}
-
-
 
 	void enterNewTask() {
 		System.out.println("Enter taskname:\t");
@@ -181,10 +186,8 @@ public class UserInterface extends TodoListCatalog {
 		LocalDate date2 = LocalDate.parse(date);
 
 		Task todo = new Task(task,prioInt,date2);
-
 		methode.addItem(todo );
 
-		// scString.close();
 	}
 
 	private void getScannerInfo() {
@@ -205,17 +208,25 @@ public class UserInterface extends TodoListCatalog {
 		switch (sort) {
 		case "1":
 			Collections.sort(list, new TaskNameComparator());
+			
 			break;
 		case "2":
 			Collections.sort(list, new TaskDueDateComparator());
-
 		case "3":
-			Collections.sort(list, new TaskPriorityComparator());
+			Collections.sort(list, new TaskNamePriorityComparator());
+			
 		default:
 			break;
 		}
 
 		System.out.println("List size=" + list.size());
+		
+//		Iterator<Task> iterator = list.iterator();
+//		while (iterator.hasNext()) {
+//			System.out.println(iterator.next());
+//		}
+		
+		// System.out.println("List size=" + list.size());
 		for (Task nextTask : list) {
 			System.out.println(nextTask);
 		}

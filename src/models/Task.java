@@ -1,6 +1,8 @@
 package models;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 
 import models.Status;
 
@@ -21,18 +23,19 @@ public class Task {
 	private LocalDate dateEntered;
 	private int id=0;
 	private static int currentRecord;
+	private Date sortDate;
 	
 	public Task(String taskName, int priority, LocalDate dateDeadline) {
-		this.id=currentRecord+1
-				;
+		
+		this.id=currentRecord;
 		this.taskName = taskName;
 		this.priority = priority;
 		this.dateDeadline = dateDeadline;
 		this.dateEntered = LocalDate.now();
 		this.status = Status.OPEN;
-		
 		currentRecord++;
 	}
+				
 
 	public String getTaskName() {
 		return taskName;
@@ -103,5 +106,9 @@ public class Task {
 	private String retValue(Status input, int length) {
 		return retValue(input.toString(), length);
 		
+	}
+
+	public static int getCurrentRecord() {
+		return currentRecord;
 	}
 }
