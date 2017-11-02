@@ -42,6 +42,7 @@ public class UserInterface extends TodoListCatalog {
 				break;
 			case 2:
 				// Delete task
+				deleteTask();
 				break;
 
 			case 3:
