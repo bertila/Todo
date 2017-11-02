@@ -64,13 +64,7 @@ public class TodoListCatalog implements Methods {
 
 		List<Task> arrayList = listAllTodo();
 		LocalDate now= LocalDate.now();
-<<<<<<< HEAD
-		
-=======
 
-
-
->>>>>>> branch 'master' of https://github.com/bertila/Todo
 		for(Task task:arrayList) {
 			LocalDate taskDeadLineDate=task.getDateDeadline();
 			if (taskDeadLineDate.compareTo(now)<0)  {
