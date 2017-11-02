@@ -2,6 +2,7 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -79,31 +80,29 @@ class TodoList_Test {
 	@Test
 	void Test_EditProperties() {
 		TodoListCatalog method = new TodoListCatalog();
-		
 		LocalDate today = LocalDate.now();
-		Task todo1 = new Task("Clean windows",1,today);
-		Task todo2 = new Task("Clean Harddrive",2,today);
-		Task todo3 = new Task("Make GitHub account",2,today);
-		Task todo4 = new Task("Develope new website",3,today);
 		
-		method.addItem(todo1);
-		method.addItem(todo2);
-		method.addItem(todo3);
-		method.addItem(todo4);
+		ArrayList<Task> list = new ArrayList<Task>();
 		
-		method.editStatus(0,Status.OPEN);
-		method.editStatus(1,Status.DONE);
-		method.editStatus(2,Status.OPEN);
-		method.editStatus(3,Status.OPEN);
+		Task todo1 = new Task("ZClean windows",1,today);
+		Task todo2 = new Task("GClean Harddrive",2,today);
+		Task todo3 = new Task("AMake GitHub account",2,today);
+		Task todo4 = new Task("DDevelope new website",3,today);
 		
+		list.add(todo1);
+		list.add(todo2);
+		list.add(todo3);
+		list.add(todo4);
+		
+		todo2.setStatus(Status.DONE);
 		assertTrue(todo2.getStatus().equals(Status.DONE));
-
+		
 	}
 	
-	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	void Test_SortingAlphabetic() {
-		TodoListCatalog method = new TodoListCatalog();
+		// TodoListCatalog method = new TodoListCatalog();
+		ArrayList<Task> list = new ArrayList<Task>();
 		
 		LocalDate today = LocalDate.now();
 		Task todo1 = new Task("ZClean windows",1,today);
@@ -111,14 +110,14 @@ class TodoList_Test {
 		Task todo3 = new Task("AMake GitHub account",2,today);
 		Task todo4 = new Task("DDevelope new website",3,today);
 		
-		method.addItem(todo1);
-		method.addItem(todo2);
-		method.addItem(todo3);
-		method.addItem(todo4);
-		
-		List<Task> list = method.listAllTodo();
+		list.add(todo1);
+		list.add(todo2);
+		list.add(todo3);
+		list.add(todo4);
 		
 		Collections.sort(list, new TaskNameComparator());
+		// System.out.println(list.get(0).getTaskName());
+		
 		assertTrue(list.get(0).getTaskName().equals("AMake GitHub account"));
 		
 	}
