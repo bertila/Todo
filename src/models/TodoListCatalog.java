@@ -61,12 +61,10 @@ public class TodoListCatalog implements Methods {
 		List<Task> arrayList = listAllTodo();
 		LocalDate now= LocalDate.now();
 		
-	
-		
 		for(Task task:arrayList) {
 			LocalDate taskDeadLineDate=task.getDateDeadline();
-			if (taskDeadLineDate.compareTo(now)>0)  {
-				System.out.println(task.getTaskName() + "/"+task.getDateDeadline());
+			if (taskDeadLineDate.compareTo(now)<0)  {
+				System.out.println( "Task with name "  + task.getTaskName() + "/"+task.getDateDeadline() + " has passed deadline date");
 			}
 		}
 		

@@ -25,7 +25,7 @@ public class UserInterface extends TodoListCatalog {
 			System.out.print("1 New | ");
 			System.out.print("2 Delete | ");
 			System.out.print("3 Edit | ");
-			System.out.print("4 List Date | ");
+			System.out.print("4 Check deadline | ");
 			System.out.print("5 List Sorted | ");
 			System.out.print("6 Remove | ");
 			System.out.println("7 Search |");
