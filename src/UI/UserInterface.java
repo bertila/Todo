@@ -2,6 +2,7 @@ package UI;
 
 import java.time.LocalDate;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -105,7 +106,6 @@ public class UserInterface extends TodoListCatalog {
 	private void editStatusFromList() {
 		System.out.println("Select ID to change");
 		String id = scString.next();
-		
 		int select = Integer.parseInt(id);
 		
 		System.out.println("Select status (O)PEN/(D)ONE");
@@ -156,10 +156,8 @@ public class UserInterface extends TodoListCatalog {
 		LocalDate date2 = LocalDate.parse(date);
 		
 		Task todo = new Task(task,prioInt,date2);
-		
-		methode.addItem(todo );
+		methode.addItem(todo);
 
-		// scString.close();
 	}
 
 	private void getScannerInfo() {
@@ -194,7 +192,12 @@ public class UserInterface extends TodoListCatalog {
 			break;
 		}
 		
-		System.out.println("List size=" + list.size());
+//		Iterator<Task> iterator = list.iterator();
+//		while (iterator.hasNext()) {
+//			System.out.println(iterator.next());
+//		}
+		
+		// System.out.println("List size=" + list.size());
 		for (Task nextTask : list) {
 			System.out.println(nextTask);
 		}

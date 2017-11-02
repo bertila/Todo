@@ -11,14 +11,9 @@ public class TaskDueDateComparator implements Comparator<Task> {
 	@Override
 	public int compare(Task o1, Task o2) {
 		
+		// return o1.getDateDeadline().compareTo(o2.getDateDeadline());
 		return o1.getDateDeadline().compareTo(o2.getDateDeadline());
-		// return - o2.getDateDeadline().compareTo(o1.getDateDeadline());
-		
-		
 	}
-
-
-
 
 	//		// TODO Auto-generated method stub
 	//		if (o1.getDateDeadline().isBefore(o2.getDateDeadline())) {
