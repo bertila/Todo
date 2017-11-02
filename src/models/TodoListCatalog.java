@@ -81,42 +81,27 @@ public class TodoListCatalog implements Methods {
 	//	}
 
 	public Task findTaskByID(int search) {
-		// TODO Bertil
-
 		List<Task> arrayList = listAllTodo();
-		// if (arrayList.contains(search)) {
 		for (Task nextTask : arrayList) {
 			if (nextTask.getId() == search) {
 				return nextTask;
 			}
 		}
-		//		// }
-		//		else
-		//		{
-		//			return null;
-		//		}
-
-
-
-
-
-		// }
 		return null;
 	}
 
 	public Task findTaskByID(String search) {
-		// Task todoItem=(Task) arrayTodoItems.get(id);
-
+		List<Task> arrayList = listAllTodo();
+		for (Task nextTask : arrayList) {
+			if (nextTask.getTaskName().indexOf(search)>0) {
+				return nextTask;
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public void editStatus(int id, models.Status status){
-		// TODO
-		// ID is not related to id=x
-
-		// int idx = Collections.binarySearch(arrayTodoItems, "id",index);
-		// int index = Collections.binarySearch(arrayTodoItems, "id", new TaskIdComparator());
 		Task tFound = findTaskByID(id);
 
 		if (tFound == null) {
