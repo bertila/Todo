@@ -25,7 +25,7 @@ public class TodoListCatalog implements Methods {
 
 	@Override
 	public void addItem(Task todoList) {
-		arrayTodoItems.add(todoList);
+		arrayTodoItems.add(numberOfTodoItems, todoList);
 		numberOfTodoItems++;
 
 	}
@@ -81,12 +81,18 @@ public class TodoListCatalog implements Methods {
 
 	@Override
 	public void editStatus(int index, models.Status status){
+		// TODO
+		// ID is not related to id=x
 		Task todoItem=(Task) arrayTodoItems.get(index);
 		if(todoItem!=null) {
 		todoItem.setStatus(status); 
 		}else {
 			System.out.println("The item was not found");
 		}
+				
+		return;
+		
+//		
 	}
 
 }

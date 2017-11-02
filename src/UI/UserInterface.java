@@ -110,10 +110,10 @@ public class UserInterface extends TodoListCatalog {
 		
 		System.out.println("Select status (O)PEN/(D)ONE");
 		id = scString.next();
-		if (id.equals("O")){
+		if (id.equalsIgnoreCase("O")){
 			editStatus(select,Status.OPEN);
 		}
-		else if (id.equals("D")) {
+		else if (id.equalsIgnoreCase("D")) {
 			editStatus(select,Status.DONE);
 		}
 	}
@@ -141,8 +141,6 @@ public class UserInterface extends TodoListCatalog {
 		
 		
 	}
-	
-
 
 	void enterNewTask() {
 		System.out.println("Enter taskname:\t");
