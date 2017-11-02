@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import UI.TaskIdComparator;
@@ -41,13 +42,30 @@ public class TodoListCatalog implements Methods {
 
 	@Override
 	public void removeDoneItems() {
-
 		List<Task> arrayList = listAllTodo();
-		for(Task task:arrayList) {
-			if (task.getStatus()==Status.DONE) {
-				arrayTodoItems.remove(task.getId());
+		Iterator<Task> it = arrayList.iterator();
+		
+		while (it.hasNext()) {
+			Task t = it.next();
+			// System.out.print(t.getTaskName());
+			if (t.getStatus().equals(Status.DONE)){
+				it.remove();
+				// System.out.println("Done");
+				// arrayTodoItems.remove(t.getId());
 			}
 		}
+				
+		
+//		for(Task task : arrayList) {
+//			if (task.getStatus().equals(Status.DONE)) {
+//				arrayTodoItems.remove(task.getId());
+//				
+//				// System.out.println(task.getId() + " "  +task.getCurrentRecord()+ " " +task.getTaskName());
+//				// arrayTodoItems.remove(0);
+//				//task.getCurrentRecord()
+//					// (task.getId());
+//			}
+//		}
 	}
 
 	@Override

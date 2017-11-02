@@ -34,8 +34,16 @@ public class UserInterface extends TodoListCatalog {
 			System.out.println("9 Exit");
 
 			String select = scString.next();
-			selected = Integer.parseInt(select);
+			try {
+				selected = Integer.parseInt(select);
+			}
+			catch (Exception e) {
+				selected =0;
+			}
+			finally{
 
+			}
+			
 			switch (selected) {
 			case 1:
 				// Enter task
