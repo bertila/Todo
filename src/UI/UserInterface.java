@@ -2,11 +2,13 @@ package UI;
 
 import java.time.LocalDate;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import models.InputType;
 import models.Status;
 import models.Task;
 import models.TodoListCatalog;
@@ -173,20 +175,51 @@ public class UserInterface extends TodoListCatalog {
 	}
 
 	void enterNewTask() {
+		String date;
+		int prio;
+		LocalDate dateOut;
 		System.out.println("Enter taskname:\t");
-		String task = scString.next();
+		GetInput input = new GetInput();
+		String task = input.getKeyboard(InputType.STRING);
+		
+		do {
+			System.out.println("Enter priority:\t");
+			String sPrio = input.getKeyboard(InputType.INTEGER);
+			prio = Integer.parseInt(sPrio);
+		} while (prio<=0 || prio >=3);
+		
 
-		System.out.println("Enter priority:\t");
-
-		String prio = scString.next();
-		int prioInt = Integer.parseInt(prio);
-
-		System.out.println("Deadline date:\t");
-		String date =scString.next();
-		LocalDate date2 = LocalDate.parse(date);
-
-		Task todo = new Task(task,prioInt,date2);
+		do {
+			System.out.println("Deadline date:\t");
+			date =input.getKeyboard(InputType.DATE);
+		} while (date == null);
+		
+		dateOut = LocalDate.parse(date);
+		
+		Task todo = new Task(task,prio,dateOut);
 		methode.addItem(todo );
+		
+
+		// LocalDate date2 = LocalDate.parse(date);
+
+		
+		
+		// String task =  scString.next();
+		
+		//1 scanner nextline wait
+		// System.out.println(task);
+
+		
+		// int prioInt = Integer.parseInt(prio);
+		
+//		String prio = scString.nextLine();
+//		int prioInt = Integer.parseInt(prio);
+
+		// Integer.parseInt(prio);
+		
+		
+//		String date =scString.nextLine();
+//		LocalDate date2 = LocalDate.parse(date);
 
 	}
 
