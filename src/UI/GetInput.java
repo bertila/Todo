@@ -73,7 +73,7 @@ public class GetInput {
 		catch (Exception e)
 		{
 			System.out.println(e.getMessage());
-			return null;
+			return "0";
 		}
 	}
 }

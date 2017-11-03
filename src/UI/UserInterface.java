@@ -12,11 +12,13 @@ import models.InputType;
 import models.Status;
 import models.Task;
 import models.TodoListCatalog;
+import models.XmlExample;
 
 
 public class UserInterface extends TodoListCatalog {
 	Scanner scString = new Scanner(System.in);
 	Scanner scInt = new Scanner(System.in);
+	XmlExample XMLStart = new XmlExample();  
 
 	TodoListCatalog methode = new TodoListCatalog();
 
@@ -34,6 +36,7 @@ public class UserInterface extends TodoListCatalog {
 			System.out.println("7 Search |");
 			System.out.println("8 Entering more values |");
 			System.out.println("9 Exit");
+			System.out.println("0 Save XML");
 
 			String select = scString.next();
 			try {
@@ -87,6 +90,12 @@ public class UserInterface extends TodoListCatalog {
 			case 9:
 				System.out.println("Exiting program");
 				return;
+			case 0:
+				// List<Task> list = methode.listAllTodo();
+
+				System.out.println("Saving XML-file");
+				XMLStart.saveXml(methode, "SAVE");
+				break;
 
 			default:
 				System.out.println("Invalid option selected!");
@@ -180,7 +189,7 @@ public class UserInterface extends TodoListCatalog {
 			System.out.println("Enter priority:\t");
 			String sPrio = input.getKeyboard(InputType.INTEGER);
 			prio = Integer.parseInt(sPrio);
-		} while (prio<=0 || prio >=3);
+		} while (prio<=0 || prio >=4);
 		
 
 		do {

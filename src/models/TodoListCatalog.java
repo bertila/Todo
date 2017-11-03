@@ -16,6 +16,10 @@ public class TodoListCatalog implements Methods {
 	public static int getNumberOfTodoItems() {
 		return numberOfTodoItems;
 	}
+	
+	public List returnCatalog() {
+		return arrayTodoItems;
+	}
 
 	public TodoListCatalog() {
 		arrayTodoItems = new ArrayList<Task>();
