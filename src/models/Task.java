@@ -2,6 +2,7 @@ package models;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 import models.Status;
@@ -56,6 +57,12 @@ public class Task {
 	public LocalDate getDateDeadline() {
 		return dateDeadline;
 	}
+	
+	public Date getdDeadline() {
+	    return Date.from(dateDeadline.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+	  }
+	
+	
 
 	public void setDateDeadline(LocalDate dateDeadline) {
 		this.dateDeadline = dateDeadline;

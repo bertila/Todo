@@ -14,6 +14,4 @@ public class TaskNamePriorityComparator implements Comparator<Task>{
 //	              .thenComparing(Task::getTaskName)
 //	              .compare(o1, o2);
 	}
-	
-
 }

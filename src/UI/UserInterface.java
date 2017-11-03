@@ -64,7 +64,6 @@ public class UserInterface extends TodoListCatalog {
 			case 4:
 				// Check deadline
 				checkDeadline();
-
 				break;
 
 			case 5:
@@ -115,7 +114,6 @@ public class UserInterface extends TodoListCatalog {
 		if (found==false) {
 			System.out.println("Could not find the task");
 		}
-
 	}
 
 	public void checkDeadline() {
@@ -129,8 +127,6 @@ public class UserInterface extends TodoListCatalog {
 		int select = Integer.parseInt(id);
 
 		methode.deleteItem(select);
-
-
 	}
 
 	private void removeDoneTodo() {
@@ -170,8 +166,6 @@ public class UserInterface extends TodoListCatalog {
 		days = rand.nextInt(200);
 		Task todo4 = new Task("Develope new website",3,today.plusDays(days));
 		methode.addItem(todo4);
-
-
 	}
 
 	void enterNewTask() {
@@ -198,29 +192,6 @@ public class UserInterface extends TodoListCatalog {
 		
 		Task todo = new Task(task,prio,dateOut);
 		methode.addItem(todo );
-		
-
-		// LocalDate date2 = LocalDate.parse(date);
-
-		
-		
-		// String task =  scString.next();
-		
-		//1 scanner nextline wait
-		// System.out.println(task);
-
-		
-		// int prioInt = Integer.parseInt(prio);
-		
-//		String prio = scString.nextLine();
-//		int prioInt = Integer.parseInt(prio);
-
-		// Integer.parseInt(prio);
-		
-		
-//		String date =scString.nextLine();
-//		LocalDate date2 = LocalDate.parse(date);
-
 	}
 
 	private void getScannerInfo() {
@@ -241,12 +212,13 @@ public class UserInterface extends TodoListCatalog {
 		switch (sort) {
 		case "1":
 			Collections.sort(list, new TaskNameComparator());
-			
 			break;
 		case "2":
-			Collections.sort(list, new TaskDueDateComparator());
+			Collections.sort(list, new TaskDeadlineDateComparator());
 		case "3":
 			Collections.sort(list, new TaskNamePriorityComparator());
+		case "4":
+			// Collections.sort(list, new TaskNamePriorityComparator());
 			
 		default:
 			break;
@@ -254,17 +226,9 @@ public class UserInterface extends TodoListCatalog {
 
 		System.out.println("List size=" + list.size());
 		
-//		Iterator<Task> iterator = list.iterator();
-//		while (iterator.hasNext()) {
-//			System.out.println(iterator.next());
-//		}
-		
-		// System.out.println("List size=" + list.size());
 		for (Task nextTask : list) {
 			System.out.println(nextTask);
 		}
-
-
 	}
 	public void editProperties(int indexID,Status status) {
 		methode.editStatus(indexID, status);
