@@ -23,8 +23,12 @@ public class TodoListCatalog implements Methods {
 
 	@Override
 	public void deleteItem(int index) {
-		arrayTodoItems.remove(index);
-
+		try {
+			arrayTodoItems.remove(index);
+		}
+		catch (Exception e){
+			System.out.println("Kunde inte hitta id="+index);
+		}
 	}
 
 	@Override
