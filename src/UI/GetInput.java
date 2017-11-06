@@ -56,7 +56,6 @@ public class GetInput {
 			return date.toString();
 
 		} catch (Exception e) { 
-			// e.printStackTrace();
 			System.out.println("Felaktigt datum (åååå-mm-dd)");
 			return null;
 		}
@@ -72,8 +71,8 @@ public class GetInput {
 		}
 		catch (Exception e)
 		{
-			System.out.println(e.getMessage());
-			return "0";
+			System.out.println("Felaktigt värde");
+			return "-1";
 		}
 	}
 }
