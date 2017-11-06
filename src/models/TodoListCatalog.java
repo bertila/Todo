@@ -1,28 +1,29 @@
 package models;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import UI.TaskIdComparator;
-
 public class TodoListCatalog implements Methods {
-	private static ArrayList arrayTodoItems;
+	// Changed to Public to work with SaveXml 
+	// private static ArrayList arrayTodoItems;
+	private ArrayList<Task> arrayTodoItems = new ArrayList<Task>();;
 	private static int numberOfTodoItems=0;
 
+
+	
+	
 	public static int getNumberOfTodoItems() {
 		return numberOfTodoItems;
 	}
 	
-	public List returnCatalog() {
+	public List<Task> returnCatalog() {
 		return arrayTodoItems;
 	}
 
 	public TodoListCatalog() {
-		arrayTodoItems = new ArrayList<Task>();
+
 	}
 
 	@Override
@@ -74,9 +75,9 @@ public class TodoListCatalog implements Methods {
 		LocalDate now= LocalDate.now();
 
 		for(Task task:arrayList) {
-			LocalDate taskDeadLineDate=task.getDateDeadline();
+			LocalDate taskDeadLineDate=task.getLocalDateDeadline();
 			if (taskDeadLineDate.compareTo(now)<0)  {
-				System.out.println( "Task with name "  + task.getTaskName() + "/"+task.getDateDeadline() + " has passed deadline date");
+				System.out.println( "Task with name "  + task.getTaskName() + "/"+task.getLocalDateDeadline() + " has passed deadline date");
 			}
 		}
 
@@ -120,11 +121,19 @@ public class TodoListCatalog implements Methods {
 			// Task todoItem=(Task) arrayTodoItems.get(id);
 			if(tFound!=null) {
 				tFound.setStatus(status); 
-			}else {
-				System.out.println("The item was not found");
 			}
 		}
 		return;
+	}
+	
+	public ArrayList<Task> getArrayTodoItems() {
+		return arrayTodoItems;
+	}
+
+
+
+	public void setArrayTodoItems(ArrayList<Task> arrayTodoItems) {
+		this.arrayTodoItems = arrayTodoItems;
 	}
 
 }

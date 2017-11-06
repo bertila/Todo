@@ -1,38 +1,32 @@
 package models;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class XmlExample {
-	public void saveXml(TodoListCatalog list, String command) {
+	public void saveXml(TodoListCatalog todoList, String command) {
 
 		command = command.toUpperCase();
 
 		switch (command) {
 		case "SAVE": {
-			// Using XmlIO to save an object to file, errors are unexpected (write protected files)
-			try {
-				list.addItem(new Task("Task1",1,LocalDate.now()));
-				list.addItem(new Task("Task1",1,LocalDate.now()));
-				list.addItem(new Task("Task1",1,LocalDate.now()));
-				
-				XMLIO.saveObject("todolist.xml", list.returnCatalog());
-				break;
-			} catch (IOException ex) {
-				Logger.getLogger(Task.class.getName()).log(Level.SEVERE, null, ex);
-			}
-		}
-		case "LOAD": {
-			// Loading with XmlIO, in this case the file might be missing.
-			try {
-				list = XMLIO.loadObject("todolist.xml", TodoListCatalog.class );
-			} catch (IOException ex) {
-				System.out.println("Could not load todolist.xml");
-			}
-			break;
+            // Using XmlIO to save an object to file, errors are unexpected (write protected files)
+            try {
+            	XmlIO.saveObject("todolist.xml", todoList);
+                break;
+            } catch (IOException ex) {
+                Logger.getLogger(Task.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        case "LOAD": {
+            // Loading with XmlIO, in this case the file might be missing.
+            try {
+            	todoList = XmlIO.loadObject("todolist.xml", TodoListCatalog.class);
+            } catch (IOException ex) {
+                System.out.println("Could not load todolist.xml");
+            }
+            break;
 		}
 
 		}

@@ -18,7 +18,7 @@ import javax.xml.transform.stream.StreamSource;
  * 
  * @author Mattias
  */
-public class XMLIO {
+public class XmlIO {
 
     /**
      * Load an object from the contents of an XML file.

@@ -94,7 +94,13 @@ public class UserInterface extends TodoListCatalog {
 				// List<Task> list = methode.listAllTodo();
 
 				System.out.println("Saving XML-file");
-				XMLStart.saveXml(methode, "SAVE");
+				XMLStart.saveXml( methode, "SAVE");
+				break;
+				
+			case 10:
+				// List<Task> list = methode.listAllTodo();
+				System.out.println("Loading XML-file");
+				XMLStart.saveXml( methode, "LOAD");
 				break;
 
 			default:

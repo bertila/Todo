@@ -74,7 +74,7 @@ class TodoList_Test {
 		for (Task nextItem : list) {
 			System.out.print(nextItem.getPriority());
 			System.out.print(nextItem.getTaskName());
-			System.out.println(nextItem.getDateDeadline());
+			System.out.println(nextItem.getLocalDateDeadline());
 		}
 	}
 	@Test

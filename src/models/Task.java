@@ -1,34 +1,31 @@
 package models;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
-import models.Status;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import UI.LocalDateAdapter;
 
 public class Task {
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-
 	private String taskName;
 	private int priority;
 	private Status status;
-	private LocalDate dateDeadline;
-	private LocalDate dateEntered;
-	private int id=0;
-	private static int currentRecord;
-	private Date sortDate;
 	
+	@XmlJavaTypeAdapter(value = LocalDateAdapter.class)
+	private LocalDate dateDeadline;
+	
+	@XmlJavaTypeAdapter(value = LocalDateAdapter.class)
+	private LocalDate dateEntered;
+	
+	private int id = 0;
+	private static int currentRecord;
+	//private Date sortDate;
+
 	public Task(String taskName, int priority, LocalDate dateDeadline) {
-		
-		this.id=currentRecord;
+
+		this.id = currentRecord;
 		this.taskName = taskName;
 		this.priority = priority;
 		this.dateDeadline = dateDeadline;
@@ -36,7 +33,19 @@ public class Task {
 		this.status = Status.OPEN;
 		currentRecord++;
 	}
-				
+	
+	
+	public Task() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getTaskName() {
 		return taskName;
@@ -54,25 +63,23 @@ public class Task {
 		this.priority = priority;
 	}
 
-	public LocalDate getDateDeadline() {
+	public LocalDate getLocalDateDeadline() {
 		return dateDeadline;
 	}
-	
-	public Date getdDeadline() {
-	    return Date.from(dateDeadline.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-	  }
-	
-	
 
-	public void setDateDeadline(LocalDate dateDeadline) {
+	public Date getLocaldDeadline() {
+		return Date.from(dateDeadline.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+	}
+
+	public void setLocalDateDeadline(LocalDate dateDeadline) {
 		this.dateDeadline = dateDeadline;
 	}
 
-	public LocalDate getDateEntered() {
+	public LocalDate getLocalDateEntered() {
 		return dateEntered;
 	}
 
-	public void setDateEntered(LocalDate dateEntered) {
+	public void setLocalDateEntered(LocalDate dateEntered) {
 		this.dateEntered = dateEntered;
 	}
 
@@ -84,35 +91,33 @@ public class Task {
 		this.status = status;
 	}
 
-
 	@Override
 	public String toString() {
-		String returnValue ="";
-		
-		
-		return "Task taskName=" + retValue(taskName,25) + " priority=" + retValue(priority,3) + " status=" + retValue(status,7) + " dateDeadline="
-				+ retValue(dateDeadline.toString(),12) + " dateEntered=" + retValue(dateEntered.toString(),12) + " id=" + retValue(id,7);
+		String returnValue = "";
+
+		return "Task taskName=" + retValue(taskName, 25) + " priority=" + retValue(priority, 3) + " status="
+				+ retValue(status, 7) + " dateDeadline=" + retValue(dateDeadline.toString(), 12) + " dateEntered="
+				+ retValue(dateEntered.toString(), 12) + " id=" + retValue(id, 7);
 	}
 
-	
 	private String retValue(String input, int length) {
 		String space = new String(new char[25]).replace('\0', ' ');
-		String ret = (input + space).substring(0, length); 
-		
+		String ret = (input + space).substring(0, length);
+
 		return ret;
-		
+
 	}
-	
+
 	private String retValue(int input, int length) {
 		String convert = Integer.toString(input);
-			
+
 		return retValue(convert, length);
-		
+
 	}
-	
+
 	private String retValue(Status input, int length) {
 		return retValue(input.toString(), length);
-		
+
 	}
 
 	public static int getCurrentRecord() {
