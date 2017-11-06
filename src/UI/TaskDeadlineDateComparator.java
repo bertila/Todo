@@ -1,5 +1,7 @@
 package UI;
 
+import java.time.LocalDate;
+import java.time.chrono.IsoChronology;
 import java.util.Comparator;
 import models.Task;
 
@@ -7,12 +9,17 @@ public class TaskDeadlineDateComparator implements Comparator<Task> {
 
 	@Override
 	public int compare(Task o1, Task o2) {
-		int result=0;
 		
-		result = o1.getLocaldDeadline().compareTo(o2.getLocaldDeadline());
-		System.out.println(o1.getLocaldDeadline() + " " + o2.getLocaldDeadline() + " "+ result);
+				
+		return o2.getLocalDateDeadline().compareTo(o1.getLocalDateDeadline());
 		
-		return result;
+		
+//		int result=0;
+//		
+//		result = o1.getLocaldDeadline().compareTo(o2.getLocaldDeadline());
+//		System.out.println(o1.getLocaldDeadline() + " " + o2.getLocaldDeadline() + " "+ result);
+//		
+//		return result;
 	}
 }
 

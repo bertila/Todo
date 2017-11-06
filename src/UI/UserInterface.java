@@ -246,7 +246,9 @@ public class UserInterface extends TodoListCatalog {
 		case "2":
 			Collections.sort(list, new TaskDeadlineDateComparator());
 		case "3":
-			Collections.sort(list, new TaskNamePriorityComparator());
+			SwitchPlaces sw = new SwitchPlaces();
+			list = sw.sortCollection();
+			// Collections.sort(list, new TaskNamePriorityComparator());
 		case "4":
 			// Collections.sort(list, new TaskNamePriorityComparator());
 
