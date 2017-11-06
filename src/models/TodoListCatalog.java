@@ -6,13 +6,12 @@ import java.util.Iterator;
 import java.util.List;
 
 public class TodoListCatalog implements Methods {
-	// Changed to Public to work with SaveXml 
-	// private static ArrayList arrayTodoItems;
-	private ArrayList<Task> arrayTodoItems = new ArrayList<Task>();;
+	private static ArrayList<Task> arrayTodoItems = new ArrayList<Task>();
 	private static int numberOfTodoItems=0;
-
-
 	
+	public TodoListCatalog() {
+		// Empty Constructor for XML export
+	}
 	
 	public static int getNumberOfTodoItems() {
 		return numberOfTodoItems;
@@ -20,10 +19,6 @@ public class TodoListCatalog implements Methods {
 	
 	public List<Task> returnCatalog() {
 		return arrayTodoItems;
-	}
-
-	public TodoListCatalog() {
-
 	}
 
 	@Override
@@ -45,7 +40,6 @@ public class TodoListCatalog implements Methods {
 
 	@Override
 	public List<Task> listAllTodo() {
-
 		return arrayTodoItems;
 	}
 
@@ -80,30 +74,11 @@ public class TodoListCatalog implements Methods {
 				System.out.println( "Task with name "  + task.getTaskName() + "/"+task.getLocalDateDeadline() + " has passed deadline date");
 			}
 		}
-
 	}
-
-	//	public void editTask(int indexID,String status,int priority) {
-	//		Task task= (Task) arrayTodoItems.get(indexID);
-	//		task.setStatus(indexID,status);
-	//		task.setPriority(priority);
-	//		
-	//	}
 
 	public Task findTaskByID(int search) {
-		List<Task> arrayList = listAllTodo();
-		for (Task nextTask : arrayList) {
+		for (Task nextTask : listAllTodo()) {
 			if (nextTask.getId() == search) {
-				return nextTask;
-			}
-		}
-		return null;
-	}
-
-	public Task findTaskByID(String search) {
-		List<Task> arrayList = listAllTodo();
-		for (Task nextTask : arrayList) {
-			if (nextTask.getTaskName().indexOf(search)>0) {
 				return nextTask;
 			}
 		}
@@ -130,10 +105,7 @@ public class TodoListCatalog implements Methods {
 		return arrayTodoItems;
 	}
 
-
-
 	public void setArrayTodoItems(ArrayList<Task> arrayTodoItems) {
 		this.arrayTodoItems = arrayTodoItems;
 	}
-
 }

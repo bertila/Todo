@@ -106,7 +106,6 @@ public class UserInterface extends TodoListCatalog {
 		} while (selected !=11);
 	}
 
-
 	public void searchByText() {
 		System.out.println("Enter task text to search for:");
 		String textSearch = scString.next();
@@ -126,6 +125,27 @@ public class UserInterface extends TodoListCatalog {
 			System.out.println("Could not find the task");
 		}
 	}
+	
+	public void searchById() {
+		System.out.println("Enter task text to search for:");
+		String textSearch = scString.next();
+
+		List<Task> list = methode.listAllTodo();
+
+		Iterator<Task> itr = list.iterator();
+		boolean found = false;
+		while(itr.hasNext()) {
+			Task task = itr.next();
+			if (task.getTaskName().indexOf(textSearch) >=0) {
+				System.out.println("Task with name" +task.getTaskName() + "found" );
+				found= true;
+			}
+		}
+		if (found==false) {
+			System.out.println("Could not find the task");
+		}
+	}
+
 
 	public void checkDeadline() {
 		methode.checkIfDeadLineExceeded();
