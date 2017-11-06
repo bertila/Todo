@@ -6,13 +6,13 @@ import java.util.Iterator;
 import java.util.List;
 
 public class TodoListCatalog implements Methods {
-	// Changed to Public to work with SaveXml 
-	// private static ArrayList arrayTodoItems;
+
 	private ArrayList<Task> arrayTodoItems = new ArrayList<Task>();;
 	private static int numberOfTodoItems=0;
 
+	public TodoListCatalog() {
 
-	
+	}
 	
 	public static int getNumberOfTodoItems() {
 		return numberOfTodoItems;
@@ -22,10 +22,7 @@ public class TodoListCatalog implements Methods {
 		return arrayTodoItems;
 	}
 
-	public TodoListCatalog() {
-
-	}
-
+	
 	@Override
 	public void deleteItem(int index) {
 		try {
@@ -83,12 +80,6 @@ public class TodoListCatalog implements Methods {
 
 	}
 
-	//	public void editTask(int indexID,String status,int priority) {
-	//		Task task= (Task) arrayTodoItems.get(indexID);
-	//		task.setStatus(indexID,status);
-	//		task.setPriority(priority);
-	//		
-	//	}
 
 	public Task findTaskByID(int search) {
 		List<Task> arrayList = listAllTodo();
