@@ -1,7 +1,4 @@
 package UI;
-import java.util.Scanner;
-
-import models.Task;
 
 public class Main {
 
