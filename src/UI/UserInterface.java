@@ -39,7 +39,6 @@ public class UserInterface extends TodoListCatalog {
 			System.out.println("11 Exit Program | ");
 			
 			GetInput input = new GetInput();
-
 			String task = input.getKeyboard(InputType.INTEGER);
 			selected = Integer.parseInt(task);
 			
@@ -116,8 +115,8 @@ public class UserInterface extends TodoListCatalog {
 		boolean found = false;
 		while(itr.hasNext()) {
 			Task task = itr.next();
-			if (task.getTaskName().indexOf(textSearch) >=0) {
-				System.out.println("Task with name" +task.getTaskName() + "found" );
+			if (task.getTaskName().toLowerCase().indexOf(textSearch.toLowerCase()) >=0) {
+				System.out.println("Task with name: " +task.getTaskName() + " found" );
 				found= true;
 			}
 		}
@@ -224,6 +223,7 @@ public class UserInterface extends TodoListCatalog {
 		do {
 			System.out.println("Deadline date:\t");
 			date =input.getKeyboard(InputType.DATE);
+
 		} while (date == null);
 
 		dateOut = LocalDate.parse(date);

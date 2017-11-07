@@ -53,12 +53,17 @@ public class GetInput {
 
 		try {
 			date= LocalDate.parse(input);
+			if (date.isBefore(LocalDate.now())) {
+				System.out.println("Datumet har redan varit (ееее-mm-dd)");
+				return null;
+			}
 			return date.toString();
 
 		} catch (Exception e) { 
 			System.out.println("Felaktigt datum (ееее-mm-dd)");
 			return null;
 		}
+		
 	}
 
 	private String keyboardInteger() {

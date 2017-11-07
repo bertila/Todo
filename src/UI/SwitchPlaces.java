@@ -27,7 +27,6 @@ public class SwitchPlaces {
 				if (d1.isAfter(d2)) {
 					Collections.swap(list,i,j);
 				}
-								
 			}
 		}
 		return list;
