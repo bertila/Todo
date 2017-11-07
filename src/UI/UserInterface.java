@@ -20,7 +20,8 @@ public class UserInterface extends TodoListCatalog {
 	XmlExample XMLStart = new XmlExample();  
 
 	TodoListCatalog methode = new TodoListCatalog();
-
+	GetInput input = new GetInput();
+	
 	int selected;
 	public void startInput() {
 
@@ -32,21 +33,15 @@ public class UserInterface extends TodoListCatalog {
 			System.out.print("4 Check deadline | ");
 			System.out.print("5 List Sorted | ");
 			System.out.print("6 Remove | ");
-			System.out.println("7 Search |");
-			System.out.println("8 Entering more values |");
-			System.out.println("9 Exit");
-			System.out.println("0 Save XML");
+			System.out.print("7 Search |");
+			System.out.print("8 Entering more values | ");
+			System.out.print("9 Save XML | ");
+			System.out.print("10 Load XML | ");
+			System.out.println("11 Exit Program | ");
 
-			String select = scString.next();
-			try {
-				selected = Integer.parseInt(select);
-			}
-			catch (Exception e) {
-				selected =0;
-			}
-			finally{
-
-			}
+			
+			String task = input.getKeyboard(InputType.INTEGER);
+			selected = Integer.parseInt(task);
 			
 			switch (selected) {
 			case 1:
@@ -59,8 +54,8 @@ public class UserInterface extends TodoListCatalog {
 				break;
 
 			case 3:
-				editStatusFromList();
 				// Edit status
+				editStatusFromList();
 				break;
 
 			case 4:
@@ -74,6 +69,7 @@ public class UserInterface extends TodoListCatalog {
 				break;
 
 			case 6:
+				// Remove task that is done
 				removeDoneTodo();
 				break;
 
@@ -83,36 +79,60 @@ public class UserInterface extends TodoListCatalog {
 				break;
 
 			case 8:
+				// Function to add 4 items
 				System.out.println("Entering more values");
-					enterBulkValues();
-					break;
-			case 9:
-				System.out.println("Exiting program");
-				return;
-			case 0:
-				// List<Task> list = methode.listAllTodo();
+				enterBulkValues();
+				break;
 
+			case 9:
+				// List<Task> list = methode.listAllTodo();
 				System.out.println("Saving XML-file");
 				XMLStart.saveXml( methode, "SAVE");
 				break;
-				
+
 			case 10:
 				// List<Task> list = methode.listAllTodo();
 				System.out.println("Loading XML-file");
 				XMLStart.saveXml( methode, "LOAD");
 				break;
+			case 11:
+				System.out.println("Exiting program");
+				return;
 
 			default:
 				System.out.println("Invalid option selected!");
 				break;
 			}
-		} while (selected !=9);
+		} while (selected !=11);
 	}
-
 
 	public void searchByText() {
 		System.out.println("Enter task text to search for:");
-		String textSearch = scString.next();
+		// String textSearch = scString.next();
+		
+		String textSearch = input.getKeyboard(InputType.STRING);
+
+		List<Task> list = methode.listAllTodo();
+
+		Iterator<Task> itr = list.iterator();
+		boolean found = false;
+		while(itr.hasNext()) {
+			Task task = itr.next();
+			if (task.getTaskName().toLowerCase().indexOf(textSearch.toLowerCase()) >=0) {
+				System.out.println("Task with name: " +task.getTaskName() + " found" );
+				found= true;
+			}
+		}
+		if (found==false) {
+			System.out.println("Could not find the task");
+		}
+	}
+	
+	public void searchById() {
+		System.out.println("Enter task text to search for:");
+		// String textSearch = scString.next();
+		
+		String textSearch = input.getKeyboard(InputType.STRING);
 
 		List<Task> list = methode.listAllTodo();
 
@@ -136,8 +156,8 @@ public class UserInterface extends TodoListCatalog {
 
 	private void deleteTask() {
 		System.out.println("Select ID to change");
-		String id = scString.next();
-
+		
+		String id = input.getKeyboard(InputType.INTEGER);
 		int select = Integer.parseInt(id);
 
 		methode.deleteItem(select);
@@ -149,11 +169,14 @@ public class UserInterface extends TodoListCatalog {
 
 	private void editStatusFromList() {
 		System.out.println("Select ID to change");
-		String id = scString.next();
+		
+		String id = input.getKeyboard(InputType.INTEGER);
 		int select = Integer.parseInt(id);
-
+		
 		System.out.println("Select status (O)PEN/(D)ONE");
-		id = scString.next();
+		
+		id = input.getKeyboard(InputType.STRING);
+		
 		if (id.equalsIgnoreCase("O")){
 			editStatus(select,Status.OPEN);
 		}
@@ -166,7 +189,7 @@ public class UserInterface extends TodoListCatalog {
 		Random rand = new Random();
 
 		LocalDate today = LocalDate.now();
-		
+
 		int days = rand.nextInt(200);
 		Task todo1 = new Task("Clean windows",1,today.plusDays(days));
 		methode.addItem(todo1);
@@ -174,9 +197,11 @@ public class UserInterface extends TodoListCatalog {
 		days = rand.nextInt(200);
 		Task todo2 = new Task("Clean Harddrive",2,today.plusDays(days));
 		methode.addItem(todo2);
+		
 		days = rand.nextInt(200);
 		Task todo3 = new Task("Make GitHub account",2,today.plusDays(days));
 		methode.addItem(todo3);
+		
 		days = rand.nextInt(200);
 		Task todo4 = new Task("Develope new website",3,today.plusDays(days));
 		methode.addItem(todo4);
@@ -189,31 +214,24 @@ public class UserInterface extends TodoListCatalog {
 		System.out.println("Enter taskname:\t");
 		GetInput input = new GetInput();
 		String task = input.getKeyboard(InputType.STRING);
-		
+
 		do {
 			System.out.println("Enter priority:\t");
 			String sPrio = input.getKeyboard(InputType.INTEGER);
 			prio = Integer.parseInt(sPrio);
 		} while (prio<=0 || prio >=4);
-		
+
 
 		do {
 			System.out.println("Deadline date:\t");
 			date =input.getKeyboard(InputType.DATE);
+
 		} while (date == null);
-		
+
 		dateOut = LocalDate.parse(date);
-		
+
 		Task todo = new Task(task,prio,dateOut);
 		methode.addItem(todo );
-	}
-
-	private void getScannerInfo() {
-
-	}
-
-	private void searchForText(String find) {
-
 	}
 
 	private void listAllTasks() {
@@ -230,16 +248,18 @@ public class UserInterface extends TodoListCatalog {
 		case "2":
 			Collections.sort(list, new TaskDeadlineDateComparator());
 		case "3":
-			Collections.sort(list, new TaskNamePriorityComparator());
+			SwitchPlaces sw = new SwitchPlaces();
+			list = sw.sortCollection();
+			// Collections.sort(list, new TaskNamePriorityComparator());
 		case "4":
 			// Collections.sort(list, new TaskNamePriorityComparator());
-			
+
 		default:
 			break;
 		}
 
 		System.out.println("List size=" + list.size());
-		
+
 		for (Task nextTask : list) {
 			System.out.println(nextTask);
 		}
