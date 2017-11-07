@@ -14,12 +14,12 @@ import models.TodoListCatalog;
 import models.XmlExample;
 
 
-public class UserInterface extends TodoListCatalog {
+public class UserInterface  {
 	Scanner scString = new Scanner(System.in);
 	Scanner scInt = new Scanner(System.in);
 	XmlExample XMLStart = new XmlExample();  
 
-	TodoListCatalog methode = new TodoListCatalog();
+	TodoListCatalog catalog = new TodoListCatalog();
 	GetInput input = new GetInput();
 	
 	int selected;
@@ -60,7 +60,7 @@ public class UserInterface extends TodoListCatalog {
 
 			case 4:
 				// Check deadline
-				checkDeadline();
+				catalog.checkDeadline();
 				break;
 
 			case 5:
@@ -70,7 +70,7 @@ public class UserInterface extends TodoListCatalog {
 
 			case 6:
 				// Remove task that is done
-				removeDoneTodo();
+				catalog.removeDoneTodo();
 				break;
 
 			case 7:
@@ -87,13 +87,13 @@ public class UserInterface extends TodoListCatalog {
 			case 9:
 				// List<Task> list = methode.listAllTodo();
 				System.out.println("Saving XML-file");
-				XMLStart.saveXml( methode, "SAVE");
+				XMLStart.saveXml( catalog, "SAVE");
 				break;
 
 			case 10:
 				// List<Task> list = methode.listAllTodo();
 				System.out.println("Loading XML-file");
-				XMLStart.saveXml( methode, "LOAD");
+				XMLStart.saveXml( catalog, "LOAD");
 				break;
 			case 11:
 				System.out.println("Exiting program");
@@ -112,7 +112,7 @@ public class UserInterface extends TodoListCatalog {
 		
 		String textSearch = input.getKeyboard(InputType.STRING);
 
-		List<Task> list = methode.listAllTodo();
+		List<Task> list = catalog.listAllTodo();
 
 		Iterator<Task> itr = list.iterator();
 		boolean found = false;
@@ -134,7 +134,7 @@ public class UserInterface extends TodoListCatalog {
 		
 		String textSearch = input.getKeyboard(InputType.STRING);
 
-		List<Task> list = methode.listAllTodo();
+		List<Task> list = catalog.listAllTodo();
 
 		Iterator<Task> itr = list.iterator();
 		boolean found = false;
@@ -150,9 +150,7 @@ public class UserInterface extends TodoListCatalog {
 		}
 	}
 
-	public void checkDeadline() {
-		methode.checkIfDeadLineExceeded();
-	}
+	
 
 	private void deleteTask() {
 		System.out.println("Select ID to change");
@@ -160,12 +158,10 @@ public class UserInterface extends TodoListCatalog {
 		String id = input.getKeyboard(InputType.INTEGER);
 		int select = Integer.parseInt(id);
 
-		methode.deleteItem(select);
+		catalog.deleteItem(select);
 	}
 
-	private void removeDoneTodo() {
-		methode.removeDoneItems();
-	}
+	
 
 	private void editStatusFromList() {
 		System.out.println("Select ID to change");
@@ -178,10 +174,10 @@ public class UserInterface extends TodoListCatalog {
 		id = input.getKeyboard(InputType.STRING);
 		
 		if (id.equalsIgnoreCase("O")){
-			editStatus(select,Status.OPEN);
+			catalog.editStatus(select,Status.OPEN);
 		}
 		else if (id.equalsIgnoreCase("D")) {
-			editStatus(select,Status.DONE);
+			catalog.editStatus(select,Status.DONE);
 		}
 	}
 
@@ -192,19 +188,19 @@ public class UserInterface extends TodoListCatalog {
 
 		int days = rand.nextInt(200);
 		Task todo1 = new Task("Clean windows",1,today.plusDays(days));
-		methode.addItem(todo1);
+		catalog.addItem(todo1);
 
 		days = rand.nextInt(200);
 		Task todo2 = new Task("Clean Harddrive",2,today.plusDays(days));
-		methode.addItem(todo2);
+		catalog.addItem(todo2);
 		
 		days = rand.nextInt(200);
 		Task todo3 = new Task("Make GitHub account",2,today.plusDays(days));
-		methode.addItem(todo3);
+		catalog.addItem(todo3);
 		
 		days = rand.nextInt(200);
 		Task todo4 = new Task("Develope new website",3,today.plusDays(days));
-		methode.addItem(todo4);
+		catalog.addItem(todo4);
 	}
 
 	void enterNewTask() {
@@ -231,7 +227,7 @@ public class UserInterface extends TodoListCatalog {
 		dateOut = LocalDate.parse(date);
 
 		Task todo = new Task(task,prio,dateOut);
-		methode.addItem(todo );
+		catalog.addItem(todo );
 	}
 
 	private void listAllTasks() {
@@ -239,38 +235,29 @@ public class UserInterface extends TodoListCatalog {
 		System.out.println("Sort byTask (1), Sort byDueDate (2), Sort byPriority (3)");
 		String sort = scString.next();
 
-		List<Task> list = methode.listAllTodo();
-
 		switch (sort) {
 		case "1":
-			Collections.sort(list, new TaskNameComparator());
+			Collections.sort(catalog.listAllTodo(), new TaskNameComparator());
 			break;
 		case "2":
-			Collections.sort(list, new TaskDeadlineDateComparator());
+			Collections.sort(catalog.listAllTodo(), new TaskDeadlineDateComparator());
 			break;
 		case "3":
-			SwitchPlaces sw = new SwitchPlaces();
-			Collections.sort(list, new TaskPriorityComparator());
-			
-			// list = sw.sortCollection();
+
+			Collections.sort(catalog.listAllTodo(), new TaskNamePriorityComparator());
 			break;
-			// Collections.sort(list, new TaskNamePriorityComparator());
-		case "4":
-			// Collections.sort(list, new TaskNamePriorityComparator());
 
 		default:
 			break;
 		}
 
-		System.out.println("List size=" + list.size());
+		System.out.println("List size=" + catalog.listAllTodo().size());
 
-		for (Task nextTask : list) {
+		for (Task nextTask : catalog.listAllTodo()) {
 			System.out.println(nextTask);
 		}
 	}
-	public void editProperties(int indexID,Status status) {
-		methode.editStatus(indexID, status);
-	}
+	
 }
 
 

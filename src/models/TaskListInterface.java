@@ -2,7 +2,7 @@ package models;
 
 import java.util.List;
 
-public interface Methods  {
+public interface TaskListInterface  {
 	void deleteItem(int index);
 	
 	void editStatus(int index,Status status);

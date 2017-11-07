@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class TodoListCatalog implements Methods {
+public class TodoListCatalog implements TaskListInterface {
 	private static ArrayList<Task> arrayTodoItems = new ArrayList<Task>();
 	private static int numberOfTodoItems=0;
 	
@@ -107,4 +107,17 @@ public class TodoListCatalog implements Methods {
 	public void setArrayTodoItems(ArrayList<Task> arrayTodoItems) {
 		this.arrayTodoItems = arrayTodoItems;
 	}
+	public void editProperties(int indexID,Status status) {
+		editStatus(indexID, status);
+	}
+	
+	public void removeDoneTodo() {
+		removeDoneItems();
+	}
+	
+	public void checkDeadline() {
+		checkIfDeadLineExceeded();
+	}
+	
+	
 }
