@@ -11,7 +11,7 @@ public class TaskDeadlineDateComparator implements Comparator<Task> {
 	public int compare(Task o1, Task o2) {
 		
 				
-		return o2.getLocalDateDeadline().compareTo(o1.getLocalDateDeadline());
+		return o1.getLocalDateDeadline().compareTo(o2.getLocalDateDeadline());
 		
 		
 //		int result=0;

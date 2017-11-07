@@ -24,7 +24,7 @@ public class UserInterface extends TodoListCatalog {
 	
 	int selected;
 	public void startInput() {
-l
+
 		do {
 			System.out.print("Select function | ");
 			System.out.print("1 New | ");
@@ -247,9 +247,13 @@ l
 			break;
 		case "2":
 			Collections.sort(list, new TaskDeadlineDateComparator());
+			break;
 		case "3":
 			SwitchPlaces sw = new SwitchPlaces();
-			list = sw.sortCollection();
+			Collections.sort(list, new TaskPriorityComparator());
+			
+			// list = sw.sortCollection();
+			break;
 			// Collections.sort(list, new TaskNamePriorityComparator());
 		case "4":
 			// Collections.sort(list, new TaskNamePriorityComparator());
