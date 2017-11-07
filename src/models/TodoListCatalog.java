@@ -107,4 +107,17 @@ public class TodoListCatalog implements Methods {
 	public void setArrayTodoItems(ArrayList<Task> arrayTodoItems) {
 		this.arrayTodoItems = arrayTodoItems;
 	}
+	public void editProperties(int indexID,Status status) {
+		editStatus(indexID, status);
+	}
+	
+	public void removeDoneTodo() {
+		removeDoneItems();
+	}
+	
+	public void checkDeadline() {
+		checkIfDeadLineExceeded();
+	}
+	
+	
 }

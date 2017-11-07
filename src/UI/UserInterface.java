@@ -150,9 +150,7 @@ public class UserInterface extends TodoListCatalog {
 		}
 	}
 
-	public void checkDeadline() {
-		methode.checkIfDeadLineExceeded();
-	}
+	
 
 	private void deleteTask() {
 		System.out.println("Select ID to change");
@@ -163,9 +161,7 @@ public class UserInterface extends TodoListCatalog {
 		methode.deleteItem(select);
 	}
 
-	private void removeDoneTodo() {
-		methode.removeDoneItems();
-	}
+	
 
 	private void editStatusFromList() {
 		System.out.println("Select ID to change");
@@ -239,34 +235,29 @@ public class UserInterface extends TodoListCatalog {
 		System.out.println("Sort byTask (1), Sort byDueDate (2), Sort byPriority (3)");
 		String sort = scString.next();
 
-		List<Task> list = methode.listAllTodo();
+		
 
 		switch (sort) {
 		case "1":
-			Collections.sort(list, new TaskNameComparator());
+			Collections.sort(methode.listAllTodo(), new TaskNameComparator());
 			break;
 		case "2":
-			Collections.sort(list, new TaskDeadlineDateComparator());
+			Collections.sort(methode.listAllTodo(), new TaskDeadlineDateComparator());
+			break;
 		case "3":
-			SwitchPlaces sw = new SwitchPlaces();
-			list = sw.sortCollection();
-			// Collections.sort(list, new TaskNamePriorityComparator());
-		case "4":
-			// Collections.sort(list, new TaskNamePriorityComparator());
-
+			Collections.sort(methode.listAllTodo(), new TaskNamePriorityComparator());
+			break;
 		default:
 			break;
 		}
 
-		System.out.println("List size=" + list.size());
+		System.out.println("List size=" + methode.listAllTodo().size());
 
-		for (Task nextTask : list) {
+		for (Task nextTask : methode.listAllTodo()) {
 			System.out.println(nextTask);
 		}
 	}
-	public void editProperties(int indexID,Status status) {
-		methode.editStatus(indexID, status);
-	}
+	
 }
 
 
