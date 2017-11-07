@@ -20,10 +20,11 @@ public class UserInterface extends TodoListCatalog {
 	XmlExample XMLStart = new XmlExample();  
 
 	TodoListCatalog methode = new TodoListCatalog();
-
+	GetInput input = new GetInput();
+	
 	int selected;
 	public void startInput() {
-
+l
 		do {
 			System.out.print("Select function | ");
 			System.out.print("1 New | ");
@@ -37,8 +38,8 @@ public class UserInterface extends TodoListCatalog {
 			System.out.print("9 Save XML | ");
 			System.out.print("10 Load XML | ");
 			System.out.println("11 Exit Program | ");
+
 			
-			GetInput input = new GetInput();
 			String task = input.getKeyboard(InputType.INTEGER);
 			selected = Integer.parseInt(task);
 			
@@ -107,7 +108,9 @@ public class UserInterface extends TodoListCatalog {
 
 	public void searchByText() {
 		System.out.println("Enter task text to search for:");
-		String textSearch = scString.next();
+		// String textSearch = scString.next();
+		
+		String textSearch = input.getKeyboard(InputType.STRING);
 
 		List<Task> list = methode.listAllTodo();
 
@@ -127,7 +130,9 @@ public class UserInterface extends TodoListCatalog {
 	
 	public void searchById() {
 		System.out.println("Enter task text to search for:");
-		String textSearch = scString.next();
+		// String textSearch = scString.next();
+		
+		String textSearch = input.getKeyboard(InputType.STRING);
 
 		List<Task> list = methode.listAllTodo();
 
@@ -145,7 +150,6 @@ public class UserInterface extends TodoListCatalog {
 		}
 	}
 
-
 	public void checkDeadline() {
 		methode.checkIfDeadLineExceeded();
 	}
@@ -153,7 +157,6 @@ public class UserInterface extends TodoListCatalog {
 	private void deleteTask() {
 		System.out.println("Select ID to change");
 		
-		GetInput input = new GetInput();
 		String id = input.getKeyboard(InputType.INTEGER);
 		int select = Integer.parseInt(id);
 
@@ -167,7 +170,6 @@ public class UserInterface extends TodoListCatalog {
 	private void editStatusFromList() {
 		System.out.println("Select ID to change");
 		
-		GetInput input = new GetInput();
 		String id = input.getKeyboard(InputType.INTEGER);
 		int select = Integer.parseInt(id);
 		
