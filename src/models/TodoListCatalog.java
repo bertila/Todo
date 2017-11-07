@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class TodoListCatalog implements Methods {
+public class TodoListCatalog implements TaskListInterface {
 	private static ArrayList<Task> arrayTodoItems = new ArrayList<Task>();
 	private static int numberOfTodoItems=0;
 	

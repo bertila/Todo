@@ -14,7 +14,7 @@ import models.TodoListCatalog;
 import models.XmlExample;
 
 
-public class UserInterface extends TodoListCatalog {
+public class UserInterface  {
 	Scanner scString = new Scanner(System.in);
 	Scanner scInt = new Scanner(System.in);
 	XmlExample XMLStart = new XmlExample();  
@@ -60,7 +60,7 @@ public class UserInterface extends TodoListCatalog {
 
 			case 4:
 				// Check deadline
-				checkDeadline();
+				methode.checkDeadline();
 				break;
 
 			case 5:
@@ -70,7 +70,7 @@ public class UserInterface extends TodoListCatalog {
 
 			case 6:
 				// Remove task that is done
-				removeDoneTodo();
+				methode.removeDoneTodo();
 				break;
 
 			case 7:
@@ -174,10 +174,10 @@ public class UserInterface extends TodoListCatalog {
 		id = input.getKeyboard(InputType.STRING);
 		
 		if (id.equalsIgnoreCase("O")){
-			editStatus(select,Status.OPEN);
+			methode.editStatus(select,Status.OPEN);
 		}
 		else if (id.equalsIgnoreCase("D")) {
-			editStatus(select,Status.DONE);
+			methode.editStatus(select,Status.DONE);
 		}
 	}
 
