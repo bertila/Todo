@@ -10,7 +10,6 @@ public class TodoListCatalog implements Methods {
 	private static int numberOfTodoItems=0;
 	
 	public TodoListCatalog() {
-		// Empty Constructor for XML export
 	}
 	
 	public static int getNumberOfTodoItems() {
